@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import { observer } from 'mobx-react';
+import { Header } from './components/Header';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Do NOT edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+@observer
+export class App extends React.Component {
+
+  public constructor(props: any) {
+    super(props);
+  }
+
+  public render(): JSX.Element {
+    return <div className='App'>
+      <div className='grid-container'>
+        <header className='header'>
+          <Header></Header>
+        </header>
+        <aside className='navigation'>
+
+        </aside>
+        <main className='main'>
+
+        </main>
+      </div>
     </div>
-  );
+  }
 }
 
 export default App;
