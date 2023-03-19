@@ -1,7 +1,9 @@
 import React from 'react';
 import './styles/App.css';
+import { Route, Routes } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { Header } from './components/Header';
+import { Home } from './components/Home';
 
 @observer
 export class App extends React.Component {
@@ -20,7 +22,9 @@ export class App extends React.Component {
 
         </aside>
         <main className='main'>
-
+          <Routes>
+            <Route path='/' element={<Home />} />
+          </Routes>
         </main>
       </div>
     </div>
