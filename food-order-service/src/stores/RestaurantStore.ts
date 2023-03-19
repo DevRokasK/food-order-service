@@ -9,7 +9,7 @@ export class RestaurantStore {
     }
 
     @action AddToStore(data: Restaurant) {
-
+        this.Restaurants.push(data);
     }
 
     @action DeleteRestaurant() {
