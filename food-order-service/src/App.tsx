@@ -4,12 +4,15 @@ import { Route, Routes } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
+import { RestaurantStore } from './stores/RestaurantStore';
 
 @observer
 export class App extends React.Component {
+  private store: RestaurantStore;
 
   public constructor(props: any) {
     super(props);
+    this.store = new RestaurantStore();
   }
 
   public render(): JSX.Element {
