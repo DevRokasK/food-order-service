@@ -9,10 +9,11 @@ export class MenuStore {
     }
 
     @action AddToStore(data: Menu) {
-        
+        this.Menu.push(data);
     }
 
     @action DeleteMenuItem() {
         
     }
+
 }
