@@ -15,8 +15,8 @@ export class RestaurantStore {
         this.Restaurants.push(data);
     }
 
-    @action DeleteRestaurant() {
-
+    @action DeleteRestaurant(data: Restaurant) {
+        this.Restaurants = this.Restaurants.filter((r) => r !== data);
     }
 
     @action GetRestaurnats() {
