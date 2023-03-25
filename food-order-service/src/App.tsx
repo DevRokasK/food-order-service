@@ -3,6 +3,7 @@ import './styles/App.css';
 import { Route, Routes } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { Header } from './components/Header';
+import { Navigation } from './components/Navigation'
 import { Home } from './components/Home';
 import { RestaurantStore } from './stores/RestaurantStore';
 
@@ -22,7 +23,7 @@ export class App extends React.Component {
           <Header></Header>
         </header>
         <aside className='navigation'>
-
+          <Navigation></Navigation>
         </aside>
         <main className='main'>
           <Routes>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const Header = observer(() => {
     return (
-        <div>
+        <div className='header-content'>
             <div className='header-logo'>
                 <img src="https://i.ibb.co/rHDMF1F/FF-logo.png" alt="FoodFast logo" className='logo' />
             </div>
