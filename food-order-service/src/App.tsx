@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import { Route, Routes } from 'react-router-dom';
+import { observer } from 'mobx-react';
+import { Header } from './components/page/Header';
+import { Navigation } from './components/page/Navigation'
+import { Home } from './components/page/Home';
+import { RestaurantStore } from './stores/RestaurantStore';
+import { RestaurantList } from './components/RestaurantList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Do NOT edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+@observer
+export class App extends React.Component {
+  private store: RestaurantStore;
+
+  public constructor(props: any) {
+    super(props);
+    this.store = new RestaurantStore();
+  }
+
+  public render(): JSX.Element {
+    return <div className='App'>
+      <div className='grid-container'>
+        <header className='header'>
+          <Header></Header>
+        </header>
+        <aside className='navigation'>
+          <Navigation></Navigation>
+        </aside>
+        <main className='main'>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/Restaurants' element={<RestaurantList store={this.store}/>}/>
+          </Routes>
+        </main>
+      </div>
     </div>
-  );
+  }
 }
 
 export default App;
