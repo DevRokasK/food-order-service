@@ -21,8 +21,8 @@ export class RestaurantStore {
 
     @action GetRestaurnats() {
         this.AddToStore(new Restaurant({
-            id: "1",
-            name: "Grill London",
+            id: "0",
+            name: "Gill London",
             description: "..",
             workingHours: "...",
             address: "...",

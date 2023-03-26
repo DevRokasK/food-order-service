@@ -9,7 +9,7 @@ export const Navigation = observer(() => {
                 <button className='navigation-left-button'>Discover</button>
             </div>
             <div className='navigation-right'>
-                <button className='navigation-right-button'>Restaurants</button>
+                <button className='navigation-right-button'><Link to="/Restaurants">Restaurants</Link></button>
             </div>
         </div>
     )
