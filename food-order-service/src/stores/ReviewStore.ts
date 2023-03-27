@@ -13,8 +13,8 @@ export class ReviewStore {
 
      }
 
-     @action DeleteReview() {
-        
+     @action DeleteReview(data: Review) {
+        this.Reviews = this.Reviews.filter((r) => r !== data);
      }
     
 }
