@@ -30,6 +30,7 @@ export class App extends React.Component {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/Restaurants' element={<RestaurantList store={this.store}/>}/>
+            <Route path='/Reviews' element={<RestaurantList store={this.store}/>}/>
           </Routes>
         </main>
       </div>

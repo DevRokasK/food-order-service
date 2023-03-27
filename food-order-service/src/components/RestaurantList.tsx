@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 import { DetailsListLayoutMode, SelectionMode, IColumn, DetailsList, Panel, Selection, PanelType, Link } from '@fluentui/react';
 import { RestaurantStore } from '../stores/RestaurantStore';
 import { Restaurant } from '../models/Restaurant';
+import { ReviewList } from '../components/ReviewList';
 
 export interface IRestaurantListProps {
     store: RestaurantStore;
@@ -27,9 +28,7 @@ export class RestaurantList extends React.Component<IRestaurantListProps> {
                 isResizable: true,
                 data: 'string',
                 isPadded: true,
-                onRender:(item: Restaurant) => {
-                    return <Link to='/Restaurants/:item'>{item.name}</Link>
-                }
+        
             },
             {
                 key: 'column2',
@@ -64,6 +63,21 @@ export class RestaurantList extends React.Component<IRestaurantListProps> {
                 data: 'string',
                 isPadded: true,
             },
+            {
+                key: 'column5',
+                name: '',
+                fieldName: '',
+                minWidth: 70,
+                maxWidth: 90,
+                isRowHeader: true,
+                isResizable: true,
+                data: 'string',
+                isPadded: true,
+                onRender: (item: Restaurant) => {
+                    return <Link onClick={() => {this.selectRestaurant(item) }}>Reviews</Link>
+                }
+            }
+
         ]
     }
 
@@ -80,7 +94,25 @@ export class RestaurantList extends React.Component<IRestaurantListProps> {
                     layoutMode={DetailsListLayoutMode.justified}
                     isHeaderVisible={true}
                 />
+                 <Panel type={PanelType.medium}
+                    isLightDismiss
+                    isOpen={store.isRestaurantSelected}
+                    onDismiss={this.onPanelDismiss}
+                  
+                >
+                    <ReviewList restaurant={store.SelectedRestaurant}></ReviewList>
+                    </Panel>
             </div>
+            
         );
+    }
+
+    private onPanelDismiss = () => {
+        this.props.store.DeselectRestaurant();
+    }
+
+    private selectRestaurant = (restaurant: Restaurant) => {
+        this.props.store.SetSelectedRestaurant(restaurant);
+
     }
 }
