@@ -9,8 +9,7 @@ export class ReviewStore {
     }
 
      @action AddToStore(data: Review) {
-
-
+        this.Reviews.push(data);
      }
 
      @action DeleteReview(data: Review) {
