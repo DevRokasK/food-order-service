@@ -12,8 +12,8 @@ export class MenuStore {
         this.Menu.push(data);
     }
 
-    @action DeleteMenuItem() {
-        
+    @action DeleteMenuItem(data: Menu) {
+        this.Menu = this.Menu.filter((r) => r !== data);
     }
 
 }
