@@ -9,12 +9,11 @@ export class ReviewStore {
     }
 
      @action AddToStore(data: Review) {
-
-
+        this.Reviews.push(data);
      }
 
-     @action DeleteReview() {
-        
+     @action DeleteReview(data: Review) {
+        this.Reviews = this.Reviews.filter((r) => r !== data);
      }
     
 }
