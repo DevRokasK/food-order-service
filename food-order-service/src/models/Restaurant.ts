@@ -1,5 +1,6 @@
 import { makeObservable, observable, computed, action, runInAction } from 'mobx';
 import { MenuStore } from '../stores/MenuStore';
+import { ReviewStore } from '../stores/ReviewStore';
 
 export interface IRestaurantItem {
   id: string;
@@ -19,6 +20,7 @@ export class Restaurant implements IRestaurantItem {
   @observable public address: string;
   @observable public telephoneNumber: string;
   @observable public MenuStore: MenuStore = new MenuStore();
+  @observable public ReviewStore: ReviewStore = new ReviewStore();
 
   public constructor(data: IRestaurantItem) {
     makeObservable(this);

@@ -4,11 +4,25 @@ import { DummyService } from '../services/DummyService';
 
 export class RestaurantStore {
     @observable public Restaurants: Restaurant[] = [];
+    @observable public SelectedRestaurant: Restaurant = null;
 
     public constructor() {
         makeObservable(this);
         this.GetRestaurnats();
-        console.log(this.Restaurants);
+    }
+
+    @computed get isRestaurantSelected(): boolean {
+        return this.SelectedRestaurant != null;
+    }
+
+    @action
+    public SetSelectedRestaurant(data: Restaurant): void {
+        this.SelectedRestaurant = data;
+    }
+
+    @action
+    public DeselectRestaurant(cancelEdit?: boolean) {
+        this.SelectedRestaurant = null;
     }
 
     @action AddToStore(data: Restaurant) {
