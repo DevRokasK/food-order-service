@@ -8,6 +8,7 @@ export interface IRestaurantItem {
     workingHours: string;
     address: string;
     telephoneNumber: string;
+    isHidden: boolean;
 }
 
 export class Restaurant implements IRestaurantItem {
@@ -18,6 +19,7 @@ export class Restaurant implements IRestaurantItem {
     public workingHours: string;
     public address: string;
     public telephoneNumber: string;
+    public isHidden: boolean;
     public MenuStore: MenuStore = new MenuStore();
     public ReviewStore: ReviewStore = new ReviewStore();
 
@@ -33,5 +35,10 @@ export class Restaurant implements IRestaurantItem {
         this.workingHours = data.workingHours;
         this.address = data.address;
         this.telephoneNumber = data.telephoneNumber;
+        this.isHidden = data.isHidden;
+    }
+
+    public hideRestaurant() {
+        this.isHidden = !this.isHidden;
     }
 }

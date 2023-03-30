@@ -32,18 +32,15 @@ export default function Restaurants() {
                 </div>
             </div>
             <div className="main">
-                <ul>
+                <div className="cardGrid">
                     {
                         React.Children.toArray(
-                            store.RestaurantStore.Restaurants.map((item, i) => <li>
+                            store.RestaurantStore.Restaurants.map((item, i) =>
                                 <div className="RestaurantCard">
-                                    <Card style={{ width: '18rem' }}>
+                                    <Card>
                                         <Card.Img variant="top" src="https://img.freepik.com/free-vector/restaurant-mural-wallpaper_23-2148695092.jpg" width={286} height={180} />
                                         <Card.Body>
                                             <Card.Title>{item.name}</Card.Title>
-                                            <Card.Text>
-                                                Description: {item.description}
-                                            </Card.Text>
                                             <Card.Text>
                                                 Address: {item.address}
                                             </Card.Text>
@@ -54,13 +51,14 @@ export default function Restaurants() {
                                         </Card.Body>
                                     </Card>
                                 </div>
-                            </li>)
+                            )
                         )
                     }
-                </ul>
+                </div>
                 <div>
                     <Button variant="primary"><a href="/" className="back-button">Go Back</a></Button>
-                </div></div>
+                </div>
+            </div>
         </div>
     )
 }

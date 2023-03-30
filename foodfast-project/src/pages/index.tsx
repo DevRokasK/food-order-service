@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link';
+import Button from 'react-bootstrap/Button';
 
 export default function MyHome() {
 
@@ -28,11 +28,11 @@ export default function MyHome() {
                     </div>
                 </div>
             </div>
-             {/*<div className='main'>
-                    <div>
-                        <img src="https://wallpapercave.com/wp/wp11872862.jpg" alt="main page background" className='main-background' />
-                    </div>
-            </div>*/}
+            <div className='main'>
+                <div className='laikinas'>
+                <Button variant="secondary" size="lg"><Link href="/restaurants">Check all restaurants!</Link></Button>{' '}
+                </div>
+            </div>
         </div>
     );
 }

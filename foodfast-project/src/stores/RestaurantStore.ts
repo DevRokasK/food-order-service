@@ -36,6 +36,7 @@ export class RestaurantStore {
             workingHours: "...",
             address: "...",
             telephoneNumber: "...",
+            isHidden: false,
         }))
         this.AddToStore(new Restaurant({
             id: "1",
@@ -44,6 +45,7 @@ export class RestaurantStore {
             workingHours: "...",
             address: "...",
             telephoneNumber: "...",
+            isHidden: false,
         }))
         this.AddToStore(new Restaurant({
             id: "2",
@@ -52,6 +54,7 @@ export class RestaurantStore {
             workingHours: "...",
             address: "...",
             telephoneNumber: "...",
+            isHidden: false,
         }))
         this.AddToStore(new Restaurant({
             id: "3",
@@ -60,6 +63,7 @@ export class RestaurantStore {
             workingHours: "...",
             address: "...",
             telephoneNumber: "...",
+            isHidden: false,
         }))
         this.AddToStore(new Restaurant({
             id: "4",
@@ -68,6 +72,7 @@ export class RestaurantStore {
             workingHours: "...",
             address: "...",
             telephoneNumber: "...",
+            isHidden: false,
         }))
         this.AddToStore(new Restaurant({
             id: "5",
@@ -76,6 +81,7 @@ export class RestaurantStore {
             workingHours: "...",
             address: "...",
             telephoneNumber: "...",
+            isHidden: false,
         }))
         this.AddToStore(new Restaurant({
             id: "6",
@@ -84,6 +90,7 @@ export class RestaurantStore {
             workingHours: "...",
             address: "...",
             telephoneNumber: "...",
+            isHidden: false,
         }))
         this.AddToStore(new Restaurant({
             id: "7",
@@ -92,6 +99,16 @@ export class RestaurantStore {
             workingHours: "...",
             address: "...",
             telephoneNumber: "...",
+            isHidden: false,
+        }))
+        this.AddToStore(new Restaurant({
+            id: "8",
+            name: "Hesburger",
+            description: "..",
+            workingHours: "...",
+            address: "...",
+            telephoneNumber: "...",
+            isHidden: false,
         }))
     }
 }
