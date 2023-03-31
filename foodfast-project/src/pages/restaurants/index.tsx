@@ -55,8 +55,8 @@ export default function Restaurants() {
                         )
                     }
                 </div>
-                <div>
-                    <Button variant="primary"><a href="/" className="back-button">Go Back</a></Button>
+                <div className="back-button">
+                    <Button variant="primary"><a href="/">Go Back</a></Button>
                 </div>
             </div>
         </div>

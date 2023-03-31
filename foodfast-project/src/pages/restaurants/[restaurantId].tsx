@@ -1,6 +1,7 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
+import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { RootStore } from "@/stores/RootStore";
 import { useRouter } from "next/router";
@@ -44,30 +45,29 @@ export default function RestaurantPage() {
                 </div>
             </div>
             <div className="main">
-                <div className="table">
-                    <Table responsive="lg" striped>
-                        <thead>
-                            <tr>
-                                <th>Author</th>
-                                <th>Score</th>
-                                <th>Comment</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {restaurant &&
-                                React.Children.toArray(
-                                    restaurant.ReviewStore.Reviews.map((item, i) => <tr>
-                                        <td>{item.author}</td>
-                                        <td>{item.score}</td>
-                                        <td>{item.comment}</td>
-                                    </tr>)
-                                )
-                            }
-                        </tbody>
-                    </Table>
-                    <div>
-                        <Button variant="primary"><a href="/restaurants" className="back-button">Go Back</a></Button>
-                    </div>
+                <div className="reviewGrid">
+                    { restaurant &&
+                        React.Children.toArray(
+                            restaurant.ReviewStore.Reviews.map((item, i) =>
+                                <div className="reviewCard">
+                                    <Card>
+                                        <Card.Body>
+                                            <Card.Title>{item.author}</Card.Title>
+                                            <Card.Text>
+                                                Review: {item.comment}
+                                            </Card.Text>
+                                            <Card.Text>
+                                                Score: {item.score}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                </div>
+                            )
+                        )
+                    }
+                </div>
+                <div className="back-button">
+                    <Button variant="primary"><a href="/restaurants">Go Back</a></Button>
                 </div>
             </div>
         </div>
