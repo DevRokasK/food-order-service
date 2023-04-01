@@ -4,8 +4,8 @@ import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { RootStore } from "@/stores/RootStore";
 
-export default function Restaurants() {
-    const store = new RootStore();
+export default function Restaurants(store: RootStore) {
+
     return (
         <div className="grid-container">
             <div className='header'>
@@ -35,7 +35,7 @@ export default function Restaurants() {
                 <div className="cardGrid">
                     {
                         React.Children.toArray(
-                            store.RestaurantStore.Restaurants.map((item, i) =>
+                            store.RestaurantStore?.Restaurants?.map((item, i) =>
                                 <div className="RestaurantCard">
                                     <Card>
                                         <Card.Img variant="top" src="https://img.freepik.com/free-vector/restaurant-mural-wallpaper_23-2148695092.jpg" width={286} height={180} />

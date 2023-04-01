@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 
-export default function MyHome() {
+export default function Home() {
 
     return (
         <div>
