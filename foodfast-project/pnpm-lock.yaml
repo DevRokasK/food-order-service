@@ -391,8 +391,8 @@ packages:
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.3.8
-      typescript: 5.0.2
       tsutils: 3.21.0_typescript@5.0.2
+      typescript: 5.0.2
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -1024,8 +1024,8 @@ packages:
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       is-path-inside: 3.0.3
-      js-yaml: 4.1.0
       js-sdsl: 4.4.0
+      js-yaml: 4.1.0
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.4.1
       lodash.merge: 4.6.2
@@ -2212,8 +2212,8 @@ packages:
     peerDependencies:
       typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
     dependencies:
-      typescript: 5.0.2
       tslib: 1.14.1
+      typescript: 5.0.2
     dev: false
 
   /type-check/0.4.0:
@@ -2290,8 +2290,8 @@ packages:
       is-bigint: 1.0.4
       is-boolean-object: 1.1.2
       is-number-object: 1.0.7
-      is-symbol: 1.0.4
       is-string: 1.0.7
+      is-symbol: 1.0.4
     dev: false
 
   /which-collection/1.0.1:
