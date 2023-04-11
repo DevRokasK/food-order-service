@@ -36,7 +36,7 @@ export class RestaurantStore {
         }
     }
 
-    public AddVehicle() {
+    public AddRestaurant() {
         const newItem: IRestaurantItem = {
             id: '',
             name: '',

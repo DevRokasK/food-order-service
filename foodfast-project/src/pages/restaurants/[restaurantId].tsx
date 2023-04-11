@@ -36,7 +36,7 @@ export default function RestaurantPage() {
             <div className='navigation'>
                 <div className='navigation-content'>
                     <div className='navigation-left'>
-                        <button className='navigation-left-button'>Discover</button>
+                        {/*<button className='navigation-left-button'>Discover</button>*/}
                     </div>
                     <div className='navigation-right'>
                         <button className='navigation-right-button'><Link href="/restaurants">Go Back</Link></button>
@@ -45,7 +45,7 @@ export default function RestaurantPage() {
             </div>
             <div className="main">
                 <div className="reviewGrid">
-                    { restaurant &&
+                    {restaurant &&
                         React.Children.toArray(
                             restaurant.ReviewStore.Reviews.map((item, i) =>
                                 <div className="reviewCard">

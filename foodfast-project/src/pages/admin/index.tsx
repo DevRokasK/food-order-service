@@ -4,8 +4,7 @@ import Link from 'next/link';
 
 export default function AdminHome() {
     const store = new RootStore();
-    
-    
+  
     return (
         <div className="grid-container">
             <div className='header'>
@@ -23,13 +22,13 @@ export default function AdminHome() {
                     <div className='admin-command-bar'>
                         {/*<button className='navigation-right-button'><Link href={{ pathname: "/admin", query: { filter: '' } }}>All restaurants</Link></button>
                         <button className='navigation-right-button'><Link href={{ pathname: "/admin/list", query: { filter: 'false' } }}>Visible</Link></button>
-                        <button className='navigation-right-button'><Link href={{ pathname: "/admin/list", query: { filter: 'true' } }}>Hidden</Link></button>*/}
-                        <button className='navigation-right-button'>Add</button>
+                        <button className='navigation-right-button'><Link href={{ pathname: "/admin/list", query: { filter: 'true' } }}>Hidden</Link></button>
+                        <button className='navigation-right-button' onClick={AddRestaurant}>Add</button>*/}
                     </div>
                 </div>
             </div>
             <div className='main-admin'>
-            <RestaurantList store={store.RestaurantStore} restaurantState={''}></RestaurantList>
+                <RestaurantList store={store.RestaurantStore} restaurantState={''}></RestaurantList>
             </div>
         </div>
     );
