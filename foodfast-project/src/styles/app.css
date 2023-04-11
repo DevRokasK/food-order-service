@@ -180,6 +180,7 @@ input[type=text]:focus, textarea:focus {
 
   .navigation {
     display: contents;
+    overflow: hidden;
     visibility: visible;
     grid-area: nav;
     width: 100vw;
@@ -204,10 +205,11 @@ input[type=text]:focus, textarea:focus {
   }
 
   .navigation-left-button {
-    visibility: hidden;
     margin: 5px 20px auto 20px;
     float: right;
     border-radius: 20px;
+    border-width: 0;
+    padding: 4px 10px 4px 10px;
     background-color: #F55951;
   }
 

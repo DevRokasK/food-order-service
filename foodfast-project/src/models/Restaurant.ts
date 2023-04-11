@@ -41,4 +41,28 @@ export class Restaurant implements IRestaurantItem {
     public hideRestaurant() {
         this.isHidden = !this.isHidden;
     }
+
+    public setId(value: string) {
+        this.id = value;
+    }
+
+    public setName(value: string) {
+        this.name = value;
+    }
+
+    public setDesc(value: string) {
+        this.description = value;
+    }
+
+    public setHours(value: string) {
+        this.workingHours = value;
+    }
+
+    public setAddress(value: string) {
+        this.address = value;
+    }
+
+    public setPhone(value: string) {
+        this.telephoneNumber = value;
+    }
 }
