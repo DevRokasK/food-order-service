@@ -1,11 +1,21 @@
 import { RestaurantList } from '@/components/restaurants/RestaurantList';
 import { RootStore } from '@/stores/RootStore';
 import Link from 'next/link';
+import { useRouter } from "next/router";
 
-export default function AdminHome() {
+export default function RestaurantInfo() {
+    const router = useRouter();
+    const restaurantId = router.query.restaurantId;
+
+    // send a request to backend API
+    // to fetch the restaurant with restaurantId
+
     const store = new RootStore();
-    
-    
+    const restaurant = store.RestaurantStore.Restaurants[Number(restaurantId)];
+    if (restaurant) {
+        restaurant.ReviewStore?.GetReview();
+    }
+
     return (
         <div className="grid-container">
             <div className='header'>
@@ -29,7 +39,7 @@ export default function AdminHome() {
                 </div>
             </div>
             <div className='main-admin'>
-            <RestaurantList store={store.RestaurantStore} restaurantState={''}></RestaurantList>
+            <div><h1>Restaurant Info</h1></div>
             </div>
         </div>
     );

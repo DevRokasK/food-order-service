@@ -21,7 +21,7 @@ export default function Home() {
             <div className='navigation'>
                 <div className='navigation-content'>
                     <div className='navigation-left'>
-                        <button className='navigation-left-button'>Discover</button>
+                        <button className='navigation-left-button'><Link href="/admin">Admin view</Link></button>
                     </div>
                     <div className='navigation-right'>
                         <button className='navigation-right-button'><Link href="/restaurants">Restaurants</Link></button>

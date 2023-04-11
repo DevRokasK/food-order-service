@@ -5,7 +5,6 @@ import Link from 'next/link';
 import React from 'react';
 import { useRouter } from 'next/router'
 import { DetailsListLayoutMode, SelectionMode, IColumn, DetailsList, Panel, Selection, PanelType, Link as link } from '@fluentui/react';
-import RestaurantPanel from './RestaurantPanel';
 
 export interface IRestaurantListProps {
     store: RestaurantStore;
@@ -108,30 +107,42 @@ export class RestaurantList extends React.Component<IRestaurantListProps> {
 
     public render() {
         const columns = this.columns;
-        const store = this.props.store;
         const items = this.props.store.Restaurants.slice();
 
         return (
-            <div>
-                <div className="details-list-wrapper">
-                    <div className="details-list">
-                        <DetailsList
-                            items={items}
-                            columns={columns}
-                            selectionMode={SelectionMode.multiple}
-                            layoutMode={DetailsListLayoutMode.justified}
-                            isHeaderVisible={true}
-                        />
+            <div className="grid-container">
+                <div className='header'>
+                    <div className='header-content'>
+                        <div className='header-logo'>
+                            <img src="https://i.ibb.co/rHDMF1F/FF-logo.png" alt="FoodFast logo" className='logo' />
+                        </div>
+                        <div className='header-name'>
+                            <Link href="/">FoodFast</Link>
+                        </div>
                     </div>
                 </div>
-                <Panel type={PanelType.medium}
-                    isLightDismiss
-                    isOpen={store.isRestaurantSelected}
-                    onDismiss={this.onPanelDismis}
-                    isFooterAtBottom={true}
-                >
-                    <RestaurantPanel restaurant={store.SelectedRestaurant}></RestaurantPanel>
-                </Panel>
+                <div className='navigation'>
+                    <div className='admin-navigation-content'>
+                        <div className='admin-command-bar'>
+                            <button className='navigation-right-button'><Link href={{ pathname: "/admin/list", query: { filter: '' } }}>All restaurants</Link></button>
+                            <button className='navigation-right-button'><Link href={{ pathname: "/admin/list", query: { filter: 'false' } }}>Visible</Link></button>
+                            <button className='navigation-right-button'><Link href={{ pathname: "/admin/list", query: { filter: 'true' } }}>Hidden</Link></button>
+                        </div>
+                    </div>
+                </div>
+                <div className='main-admin'>
+                    <div className="details-list-wrapper">
+                        <div className="details-list">
+                            <DetailsList
+                                items={items}
+                                columns={columns}
+                                selectionMode={SelectionMode.multiple}
+                                layoutMode={DetailsListLayoutMode.justified}
+                                isHeaderVisible={true}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -143,4 +154,15 @@ export class RestaurantList extends React.Component<IRestaurantListProps> {
     private onPanelDismis = () => {
         this.props.store.DeselectRestaurant();
     }
+}
+
+export default function List() {
+    const store = new RootStore();
+    const router = useRouter();
+    //const data = router.query;
+    const data = "true";
+
+    return (
+        <RestaurantList store={store.RestaurantStore} restaurantState={data}></RestaurantList>
+    );
 }
