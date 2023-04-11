@@ -30,7 +30,7 @@ export default function Home() {
             </div>
             <div className='main'>
                 <div className='laikinas'>
-                <Button variant="secondary" size="lg"><Link href="/restaurants">Check all restaurants!</Link></Button>{' '}
+                    <Button variant="secondary" size="lg"><Link href="/restaurants">Check all restaurants!</Link></Button>{' '}
                 </div>
             </div>
         </div>
