@@ -10,4 +10,6 @@ export class RootStore {
         this.Service = new RestService();
         this.RestaurantStore = new RestaurantStore();
     }
+
+    
 }

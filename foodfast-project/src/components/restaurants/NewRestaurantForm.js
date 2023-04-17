@@ -5,7 +5,6 @@ import classes from './NewRestaurantForm.module.css';
 import { Restaurant } from '@/models/Restaurant';
 
 export default function NewMeetupForm(props) {
-    const idInputRef = useRef();
     const nameInputRef = useRef();
     const descriptionInputRef = useRef();
     const hoursInputRef = useRef();
@@ -15,7 +14,6 @@ export default function NewMeetupForm(props) {
     function submitHandler(event) {
         event.preventDefault();
 
-        const enteredId = idInputRef.current.value;
         const enteredName = nameInputRef.current.value;
         const enteredDescription = descriptionInputRef.current.value;
         const enteredHours = hoursInputRef.current.value;
@@ -24,13 +22,11 @@ export default function NewMeetupForm(props) {
 
 
         const restaurantData = {
-            id: enteredId,
             name: enteredName,
             description: enteredDescription,
             workingHours: enteredHours,
             address: enteredAddress,
-            telephoneNumber: enteredPhone,
-            isHiddem: false,
+            phoneNumber: enteredPhone,
         };
 
         props.onAddRestaurant(restaurantData);
@@ -57,10 +53,6 @@ export default function NewMeetupForm(props) {
             </div>
             <Card>
                 <form className={classes.form} onSubmit={submitHandler}>
-                    <div className={classes.control}>
-                        <label htmlFor='id'>Restaurant Id</label>
-                        <input type='text' required id='id' ref={idInputRef} />
-                    </div>
                     <div className={classes.control}>
                         <label htmlFor='name'>Restaurant Title</label>
                         <input type='text' required id='name' ref={nameInputRef} />

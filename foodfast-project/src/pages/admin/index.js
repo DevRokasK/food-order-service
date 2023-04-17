@@ -1,4 +1,3 @@
-import { RootStore } from '@/stores/RootStore';
 import Link from 'next/link';
 import RestaurantList from '../../components/restaurants/RestaurantList'
 
@@ -31,13 +30,16 @@ export default function AdminHome(props) {
 
 export async function getStaticProps() {
     //fetch data from API
-    const store = new RootStore();
+    // http://localhost:5228/api/food-fast/restaurants
+    const response = await fetch('http://localhost:5228/api/food-fast/restaurants', {
+        method: "GET"
+    });
 
-    
+    const data = await response.json();
 
     return {
         props: {
-            restaurants: DUMMY_REST
+            restaurants: data
         }
     };
 }
@@ -50,7 +52,7 @@ const DUMMY_REST = [
         workingHours: "...",
         address: "...",
         telephoneNumber: "...",
-        isHidden: true,
+        isHidden: 0,
     },
     {
         id: "1",
@@ -59,7 +61,7 @@ const DUMMY_REST = [
         workingHours: "...",
         address: "...",
         telephoneNumber: "...",
-        isHidden: true,
+        isHidden: 0,
     },
     {
         id: "2",
@@ -68,7 +70,7 @@ const DUMMY_REST = [
         workingHours: "...",
         address: "...",
         telephoneNumber: "...",
-        isHidden: true,
+        isHidden: 0,
     },
     {
         id: "3",
@@ -77,7 +79,7 @@ const DUMMY_REST = [
         workingHours: "...",
         address: "...",
         telephoneNumber: "...",
-        isHidden: false,
+        isHidden: 0,
     },
     {
         id: "4",
@@ -86,7 +88,7 @@ const DUMMY_REST = [
         workingHours: "...",
         address: "...",
         telephoneNumber: "...",
-        isHidden: false,
+        isHidden: 0,
     },
     {
         id: "5",
@@ -95,7 +97,7 @@ const DUMMY_REST = [
         workingHours: "...",
         address: "...",
         telephoneNumber: "...",
-        isHidden: false,
+        isHidden: 0,
     },
     {
         id: "6",
@@ -104,7 +106,7 @@ const DUMMY_REST = [
         workingHours: "...",
         address: "...",
         telephoneNumber: "...",
-        isHidden: false,
+        isHidden: 0,
     },
     {
         id: "7",
@@ -113,7 +115,7 @@ const DUMMY_REST = [
         workingHours: "...",
         address: "...",
         telephoneNumber: "...",
-        isHidden: false,
+        isHidden: 0,
     },
     {
         id: "8",
@@ -122,6 +124,6 @@ const DUMMY_REST = [
         workingHours: "...",
         address: "...",
         telephoneNumber: "...",
-        isHidden: false,
+        isHidden: 0,
     }
 ]
