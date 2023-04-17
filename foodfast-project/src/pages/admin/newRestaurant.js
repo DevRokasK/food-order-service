@@ -5,11 +5,11 @@ export default function NewRestaurantPage(props) {
     const router = useRouter();
 
     async function addRestaurantHandler(enteredRestaurantData) {
-        const response = await fetch('../api/newRestaurant', {
+        const response = await fetch('http://localhost:5228/api/food-fast/restaurant/create', {
             method: "POST",
             body: JSON.stringify(enteredRestaurantData),
             headers: {
-                'Content-type': 'applicationn/json'
+                'Content-type': 'application/json'
             }
         });
 

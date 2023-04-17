@@ -9,6 +9,7 @@ export default function RestaurantListCustomer(props) {
                 <RestaurantItem
                     key={restaurant.id}
                     image="https://img.freepik.com/free-vector/restaurant-mural-wallpaper_23-2148695092.jpg"
+                    id={restaurant.id}
                     name={restaurant.name}
                     workingHours={restaurant.workingHours}
                     telephoneNumber={restaurant.phoneNumber}

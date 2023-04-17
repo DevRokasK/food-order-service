@@ -16,7 +16,12 @@ export default function RestaurantItem(props) {
                     <p>Phone: {props.telephoneNumber}</p>
                 </div>
                 <div className={classes.actions}>
-                    <button>Reviews</button>
+                    <button><Link href={{
+                        pathname: `/restaurants/reviews`,
+                        query: {
+                            name: props.name
+                        }
+                    }}>Reviews</Link></button>
                 </div>
             </Card>
         </li>
