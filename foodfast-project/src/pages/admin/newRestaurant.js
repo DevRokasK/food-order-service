@@ -13,11 +13,9 @@ export default function NewRestaurantPage(props) {
             }
         });
 
-        const data = response.json();
-
-        props.restaurants.push(enteredRestaurantData);
-
-        router.push('/admin')
+        if (response.status === 200) {
+            router.push('/admin')
+        }
     }
 
     return <NewRestaurantForm onAddRestaurant={addRestaurantHandler} />

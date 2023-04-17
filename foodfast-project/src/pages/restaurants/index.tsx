@@ -6,7 +6,7 @@ import { RootStore } from "@/stores/RootStore";
 
 export default function Restaurants() {
     const store = new RootStore();
-    store.RestaurantStore.Init("false");
+    store.RestaurantStore.Init(0);
 
     return (
         <div className="grid-container">

@@ -1,9 +1,30 @@
 import Card from '../ui/Card';
 import classes from './RestaurantItem.module.css';
-import { useState } from 'react';
 
-export default function MeetupItem(props) {
-    const [objCopy, setHidden] = useState({ ...props });
+export default function RestaurantItem(props) {
+    function submitHandler(event) {
+        event.preventDefault();
+
+        const name = props.name;
+        let state = 0;
+        if (props.isHidden == 0) {
+            state = 1;
+        }
+
+        const stateData = {
+            restaurantName: name,
+            state: state
+        }
+
+        props.onChangeState(stateData);
+    }
+
+    let state = null;
+    if (props.isHidden == 0) {
+        state = "Hidden";
+    } else {
+        state = "Visible";
+    }
 
     return (
         <li className={classes.item}>
@@ -15,10 +36,10 @@ export default function MeetupItem(props) {
                     <p>Working hours: {props.workingHours}</p>
                     <p>Address: {props.address}</p>
                     <p>Phone: {props.telephoneNumber}</p>
-                    <p>Hidden: {objCopy.isHidden?.toString()}</p>
+                    <p>State: {state}</p>
                 </div>
                 <div className={classes.actions}>
-                    <button onClick={() => setHidden(objCopy.isHidden = !objCopy.isHidden)}>Change status</button>
+                    <button onClick={submitHandler}>Change status</button>
                 </div>
             </Card>
         </li>
