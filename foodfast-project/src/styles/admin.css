@@ -1,0 +1,7 @@
+.main-admin{
+    grid-area: main;
+    overflow: auto;
+    background-color: #ffffff;
+    height: 100vh;
+    /*background-image: url('https://wallpapercave.com/wp/wp11872862.jpg');*/
+  }
