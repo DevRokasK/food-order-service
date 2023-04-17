@@ -28,6 +28,28 @@ export class RestaurantStore {
         this.Restaurants = this.Restaurants.filter((r) => r !== data);
     }
 
+    public async Init(restaurantState: string) {
+        this.Restaurants = [];
+        this.GetRestaurnats();
+        if (restaurantState !== "null") {
+            this.Restaurants = this.Restaurants.filter((restaurant) => { return restaurant.isHidden.toString() === restaurantState });
+        }
+    }
+
+    public AddRestaurant() {
+        const newItem: IRestaurantItem = {
+            id: '',
+            name: '',
+            description: '',
+            workingHours: '',
+            address: '',
+            telephoneNumber: '',
+            isHidden: false
+        }
+        let newRestaurant: Restaurant = new Restaurant(newItem);
+        this.SetSelectedRestaurant(newRestaurant);
+    }
+
     GetRestaurnats() {
         this.AddToStore(new Restaurant({
             id: "0",
@@ -36,7 +58,7 @@ export class RestaurantStore {
             workingHours: "...",
             address: "...",
             telephoneNumber: "...",
-            isHidden: false,
+            isHidden: true,
         }))
         this.AddToStore(new Restaurant({
             id: "1",
@@ -45,7 +67,7 @@ export class RestaurantStore {
             workingHours: "...",
             address: "...",
             telephoneNumber: "...",
-            isHidden: false,
+            isHidden: true,
         }))
         this.AddToStore(new Restaurant({
             id: "2",
@@ -54,7 +76,7 @@ export class RestaurantStore {
             workingHours: "...",
             address: "...",
             telephoneNumber: "...",
-            isHidden: false,
+            isHidden: true,
         }))
         this.AddToStore(new Restaurant({
             id: "3",

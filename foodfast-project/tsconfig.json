@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,11 +19,26 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "strictPropertyInitialization": false,
     "strictNullChecks": false
   },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next.config.js",
+    "src/components/ui/Card.js",
+    "src/components/restaurants/RestaurantItem.js",
+    "src/pages/admin/index.tsx",
+    "src/pages/admin/newRestaurant.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js", "src/pages/restaurants/reviews.tsx/new-review.js", "src/components/Reviews/NewReviewForm.js"],
   "exclude": ["node_modules"]
 }

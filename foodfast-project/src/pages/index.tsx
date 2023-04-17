@@ -21,7 +21,7 @@ export default function Home() {
             <div className='navigation'>
                 <div className='navigation-content'>
                     <div className='navigation-left'>
-                        <button className='navigation-left-button'>Discover</button>
+                        <button className='navigation-left-button'><Link href="/admin">Admin view</Link></button>
                     </div>
                     <div className='navigation-right'>
                         <button className='navigation-right-button'><Link href="/restaurants">Restaurants</Link></button>
@@ -30,7 +30,7 @@ export default function Home() {
             </div>
             <div className='main'>
                 <div className='laikinas'>
-                <Button variant="secondary" size="lg"><Link href="/restaurants">Check all restaurants!</Link></Button>{' '}
+                    <Button variant="secondary" size="lg"><Link href="/restaurants">Check all restaurants!</Link></Button>{' '}
                 </div>
             </div>
         </div>

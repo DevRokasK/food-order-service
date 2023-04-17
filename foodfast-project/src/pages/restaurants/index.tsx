@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { RootStore } from "@/stores/RootStore";
 
 export default function Restaurants() {
-
     const store = new RootStore();
+    store.RestaurantStore.Init("false");
 
     return (
         <div className="grid-container">
@@ -26,7 +26,7 @@ export default function Restaurants() {
             <div className='navigation'>
                 <div className='navigation-content'>
                     <div className='navigation-left'>
-                        <button className='navigation-left-button'>Discover</button>
+                        {/*<button className='navigation-left-button'>Discover</button>*/}
                     </div>
                     <div className='navigation-right'>
                         <button className='navigation-right-button'><Link href="/">Go Back</Link></button>
