@@ -5,7 +5,7 @@ export class RestaurantStore {
     public SelectedRestaurant: Restaurant = null;
 
     public constructor() {
-        this.GetRestaurnats();
+        //this.GetRestaurnats();
     }
 
     get isRestaurantSelected(): boolean {

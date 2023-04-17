@@ -140,7 +140,8 @@ body {
   margin: 20% 0 20% 0;
 }
 
-input[type=text], textarea {
+input[type=text],
+textarea {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
@@ -150,13 +151,20 @@ input[type=text], textarea {
   margin: 5px 1px 3px 0px;
   border: 1px solid #DDDDDD;
 }
- 
-input[type=text]:focus, textarea:focus {
+
+input[type=text]:focus,
+textarea:focus {
   box-shadow: 0 0 5px rgba(245, 89, 81, 1);
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
   border: 1px solid rgba(245, 89, 81, 1);
   color: #000000;
+}
+
+ul {
+  -webkit-column-count: 1;
+  -moz-column-count: 1;
+  column-count: 1;
 }
 
 @media only screen and (min-width: 768px) {
@@ -297,5 +305,4 @@ input[type=text]:focus, textarea:focus {
     border-radius: 20px;
     background-color: #FFFFFF;
   }
-
 }

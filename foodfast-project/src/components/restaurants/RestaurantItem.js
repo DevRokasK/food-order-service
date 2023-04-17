@@ -39,7 +39,7 @@ export default function RestaurantItem(props) {
                     <p>State: {state}</p>
                 </div>
                 <div className={classes.actions}>
-                    <button onClick={submitHandler}>Change status</button>
+                    <button onClick={submitHandler}>Change state</button>
                 </div>
             </Card>
         </li>

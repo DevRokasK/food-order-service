@@ -35,7 +35,7 @@
     "src/components/restaurants/RestaurantItem.js",
     "src/pages/admin/index.tsx",
     "src/pages/admin/newRestaurant.js"
-  ],
+, "src/pages/restaurants/index.js"  ],
   "exclude": [
     "node_modules"
   ]
