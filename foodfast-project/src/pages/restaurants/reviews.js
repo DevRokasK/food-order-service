@@ -53,6 +53,7 @@ export default function RestaurantPage(props) {
                 </div>
             </div>
             <div className="main">
+            <button className="add-review"><Link href={`/restaurants/new-review`}>Add a review</Link></button>
                 <div className="reviewGrid">
                     <ReviewList reviews={props.reviews} />
                 </div>
