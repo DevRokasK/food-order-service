@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import Card from '../ui/Card';
 import classes from './NewReviewForm.module.css'
+import Link from 'next/link';
 
 export default function NewReviewForm(props) {
     const authorInputRef = useRef();
@@ -25,9 +26,17 @@ export default function NewReviewForm(props) {
 
     return (
         <div>
+            <div className='navigation'>
+                <div className='navigation-content'>
+                    <div className='admin-command-bar'>
+                        <button className='navigation-right-button'><Link href="/restaurants/3">Cancel</Link></button>
+                    </div>
+                </div>
+            </div>
             <Card>
                 <form className={classes.form} onSubmit={submitHandler}>
 
+               
                     <div className={classes.control}>
                         <label htmlFor='author'>Name Surname</label>
                         <input type='text' required id='author' ref={authorInputRef} />
@@ -35,7 +44,7 @@ export default function NewReviewForm(props) {
 
                     <div className={classes.control}>
                         <label htmlFor='score'>Score</label>
-                        <input type='number' required id='score' ref={scoreInputRef} />
+                        <input type='text' required id='score' ref={scoreInputRef} />
                     </div>
 
                     <div className={classes.control}>
