@@ -4,7 +4,9 @@ import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { RootStore } from "@/stores/RootStore";
 
-export default function Restaurants(store: RootStore) {
+export default function Restaurants() {
+
+    const store = new RootStore();
 
     return (
         <div className="grid-container">
