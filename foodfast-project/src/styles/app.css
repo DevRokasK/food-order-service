@@ -135,9 +135,23 @@ body {
   justify-content: center;
 }
 
+.add-review {
+  margin-bottom: 20px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: #F55951;
+  padding: 10px 20px;
+  font-size: 30px;
+  border: 2px solid black;
+  /* margin-top: 20px;
+  margin-bottom: 10;
+  margin-right: 300px;
+  margin-left: 700px; */
+}
+
 .laikinas {
   text-align: center;
-  margin: 20% 0 20% 0;
 }
 
 input[type=text], textarea {

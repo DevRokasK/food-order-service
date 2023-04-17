@@ -44,6 +44,7 @@ export default function RestaurantPage() {
                 </div>
             </div>
             <div className="main">
+            <button className="add-review"><Link href={`/restaurants/new-review`}>Add a review</Link></button>
                 <div className="reviewGrid">
                     {restaurant &&
                         React.Children.toArray(
@@ -58,6 +59,7 @@ export default function RestaurantPage() {
                                             <Card.Text>
                                                 Score: {item.score}
                                             </Card.Text>
+                                            <button className="delete-review"><Link href="/pakeist">Delete a review</Link></button>
                                         </Card.Body>
                                     </Card>
                                 </div>
