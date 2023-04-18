@@ -1,21 +1,30 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
-import { RootStore } from "@/stores/RootStore";
-import { useRouter } from "next/router";
+import ReviewList from "../../components/ReviewList"
+import { useRouter } from 'next/router'
 
-export default function RestaurantPage() {
+export default function RestaurantPage(props) {
     const router = useRouter();
-    const restaurantId = router.query.restaurantId;
+    const name = router.query.name;
+    getProps();
+    async function getProps() {
+        //fetch data from API
+        // http://localhost:5228/api/food-fast/restaurant/test/reviews?restaurantName=test
+        const requestURL = `http://localhost:5228/api/food-fast/restaurant/${name}/reviews?restaurantName=${name}`;
+        console.group(requestURL)
+        const response = await fetch(requestURL, {
+            method: "GET"
+        });
 
-    // send a request to backend API
-    // to fetch the restaurant with restaurantId
+        const data = await response.json();
+        console.log(data);
 
-    const store = new RootStore();
-    const restaurant = store.RestaurantStore.Restaurants[Number(restaurantId)];
-    if (restaurant) {
-        restaurant.ReviewStore?.GetReview();
+        return {
+            props: {
+                reviews: data
+            }
+        };
     }
 
     return (
@@ -46,26 +55,7 @@ export default function RestaurantPage() {
             <div className="main">
             <button className="add-review"><Link href={`/restaurants/new-review`}>Add a review</Link></button>
                 <div className="reviewGrid">
-                    {restaurant &&
-                        React.Children.toArray(
-                            restaurant.ReviewStore.Reviews.map((item, i) =>
-                                <div className="reviewCard">
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>{item.author}</Card.Title>
-                                            <Card.Text>
-                                                Review: {item.comment}
-                                            </Card.Text>
-                                            <Card.Text>
-                                                Score: {item.score}
-                                            </Card.Text>
-                                            <button className="delete-review">Delete a review</button>
-                                        </Card.Body>
-                                    </Card>
-                                </div>
-                            )
-                        )
-                    }
+                    <ReviewList reviews={props.reviews} />
                 </div>
                 <div className="back-button">
                     <Button variant="primary"><a href="/restaurants">Go Back</a></Button>
@@ -73,4 +63,6 @@ export default function RestaurantPage() {
             </div>
         </div>
     )
+
+
 }
