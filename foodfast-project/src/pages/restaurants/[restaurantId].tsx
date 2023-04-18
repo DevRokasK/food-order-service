@@ -59,7 +59,7 @@ export default function RestaurantPage() {
                                             <Card.Text>
                                                 Score: {item.score}
                                             </Card.Text>
-                                            <button className="delete-review"><Link href="/pakeist">Delete a review</Link></button>
+                                            <button className="delete-review">Delete a review</button>
                                         </Card.Body>
                                     </Card>
                                 </div>
