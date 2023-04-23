@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Button from 'react-bootstrap/Button';
 
 export default function Home() {
 
@@ -30,7 +29,7 @@ export default function Home() {
             </div>
             <div className='main'>
                 <div className='laikinas'>
-                    <Button variant="secondary" size="lg"><Link href="/restaurants">Check all restaurants!</Link></Button>{' '}
+                    <button className='main-button'><Link href="/restaurants">Check all restaurants!</Link></button>
                 </div>
             </div>
         </div>

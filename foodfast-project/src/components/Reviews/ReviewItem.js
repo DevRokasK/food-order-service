@@ -1,5 +1,5 @@
-import Card from './ui/Card';
-import classes from './restaurants/RestaurantItem.module.css';
+import Card from '../ui/Card';
+import classes from '../restaurants/RestaurantItem.module.css';
 
 export default function ReviewItem(props) {
 

@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
-import NewReviewForm from '../../components/Reviews/NewReviewForm'
+import NewReviewForm from '../../components/reviews/NewReviewForm'
 
 export default function NewRestaurantPage(props) {
     const router = useRouter();
-    const restaurantId = router.query.restaurantId;
+    const restaurantName = router.query.name;
+    console.log(restaurantName);
 
     async function addReviewHandler(enteredReviewData) {
         const response = await fetch('../api/newReview', {
@@ -21,5 +22,5 @@ export default function NewRestaurantPage(props) {
         router.push('/restaurants')
     }
 
-    return <NewReviewForm onAddReview={addReviewHandler} />
+    return <NewReviewForm onAddReview={addReviewHandler} name={restaurantName} />
 }
