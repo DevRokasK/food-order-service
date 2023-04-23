@@ -38,5 +38,17 @@ namespace API.Repositories
                 await _context.SaveChangesAsync();
             }
         }
-    }
+
+		public async Task DeleteReview(long reviewID)
+        {
+			var reviewToDelete = await _context.Reviews.FindAsync(reviewID);
+
+			if (reviewToDelete != null)
+			{
+				_context.Reviews.Remove(reviewToDelete);
+				await _context.SaveChangesAsync();
+			}
+		}
+
+	}
 }

@@ -38,5 +38,14 @@ namespace API.Services
             return _DBRestaurantRepository.GetRestaurants();
         }
 
-    }
+		public IQueryable<Restaurant> GetRestaurantsFiltered(string filter)
+		{
+			return _DBRestaurantRepository.GetRestaurantsFiltered(filter);
+		}
+
+		public async Task UpdateRestaurant(string restaurantName, RestaurantUpdateModel restaurant)
+        {
+			await _DBRestaurantRepository.UpdateRestaurant(restaurantName, restaurant);
+		}
+	}
 }
