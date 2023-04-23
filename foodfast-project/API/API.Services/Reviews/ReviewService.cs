@@ -31,5 +31,10 @@ namespace API.Services
         {
             await _DBReviewRepository.IncreaseReviewScore(reviewID);
         }
+
+        public async Task DeleteReview(long reviewID)
+        {
+            await _DBReviewRepository.DeleteReview(reviewID);
+        }
     }
 }

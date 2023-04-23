@@ -74,7 +74,20 @@ namespace API.Controllers
         //=======================================================================================================================================
         //Restaurant endpoints
         //=======================================================================================================================================
-        [HttpGet("api/food-fast/restaurants")]
+
+        [HttpGet("api/food-fast/restaurants/filter")]
+		public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurantsFiltered(string filter)
+        {
+			var result = await _restaurantService.GetRestaurantsFiltered(filter).ToListAsync();
+
+			if (!result.Any())
+				return NotFound();
+
+			return Ok(result);
+		}
+
+
+		[HttpGet("api/food-fast/restaurants")]
         public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants()
         {
             var result = await _restaurantService.GetRestaurants().ToListAsync();
@@ -100,8 +113,24 @@ namespace API.Controllers
             return Ok(restaurant);
         }
 
+        [HttpPatch("api/food-fast/restaurant/{name}/update")]
+        public async Task<ActionResult> UpdateRestaurant(string restaurantName, RestaurantUpdateModel partialRestaurant)
+        {
+            try
+            {
+				await _restaurantService.UpdateRestaurant(restaurantName, partialRestaurant);
+				return Ok();
+			}
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
-        [HttpPost("api/food-fast/restaurant/create")]
+		}
+
+
+
+		[HttpPost("api/food-fast/restaurant/create")]
 
         public async Task<ActionResult> CreateRestaurant(RestaurantCreateModel restaurantToCreate)
         {
@@ -200,6 +229,20 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+		[HttpPost("api/food-fast/restaurant/{name}/review/{id}/delete")]
+		public async Task<ActionResult> DeleteReview(long reviewID)
+		{
+			try
+			{
+				await _reviewService.DeleteReview(reviewID);
+				return Ok();
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
 
 
 		//=======================================================================================================================================

@@ -12,5 +12,7 @@ namespace API.Repositories
         Task CreateReview(Review review);
         IQueryable<Review> GetReviews(long restaurantID);
         Task IncreaseReviewScore(long reviewID);
-    }
+		Task DeleteReview(long reviewID);
+
+	}
 }
