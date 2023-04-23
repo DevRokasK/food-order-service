@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
 import RestaurantListCustomer from '../../components/restaurants/RestaurantListCustomer'
 
@@ -30,10 +29,10 @@ export default function Restaurants(props) {
             </div>
             <div className="main">
                 <div className=''>
-                <RestaurantListCustomer restaurants={props.restaurants} />
+                    <RestaurantListCustomer restaurants={props.restaurants} />
                 </div>
                 <div className="back-button">
-                    <Button variant="primary"><a href="/">Go Back</a></Button>
+                <button className='main-button'><Link href="/">Go Back</Link></button>
                 </div>
             </div>
         </div>

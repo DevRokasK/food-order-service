@@ -1,5 +1,6 @@
+import React from "react";
 import Link from 'next/link';
-import ReviewList from "../../components/reviews/ReviewList"
+import MenuList from "../../components/menu/MenuList"
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 
@@ -10,7 +11,7 @@ export default function RestaurantPage(props) {
     async function getProps() {
         //fetch data from API
         // http://localhost:5228/api/food-fast/restaurant/test/reviews?restaurantName=test
-        const requestURL = `http://localhost:5228/api/food-fast/restaurant/${name}/reviews?restaurantName=${name}`;
+        const requestURL = `http://localhost:5228/api/food-fast/restaurant/${name}/meals?restaurantName=${name}`;
         console.group(requestURL)
         const response = await fetch(requestURL, {
             method: "GET"
@@ -21,38 +22,22 @@ export default function RestaurantPage(props) {
 
         return {
             props: {
-                reviews: data
+                menu: data
             }
         };
     }*/
 
     const router = useRouter();
     const name = router.query.name;
-    const [data, setData] = useState();
-    const requestURL = `http://localhost:5228/api/food-fast/restaurant/${name}/reviews?restaurantName=${name}`;
+    const [data, setData] = useState(null);
+    const requestURL = `http://localhost:5228/api/food-fast/restaurant/${name}/meals?restaurantName=${name}`;
 
-    /*useEffect(() => {
+    useEffect(() => {
         fetch(requestURL)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setData(data)
             })
-    }, [])*/
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(requestURL);
-                const json = await response.json();
-                setData(json);
-            } catch (error) {
-                console.log("error", error);
-                setData([]);
-            }
-        }
-
-        fetchData();
     }, [])
 
     return (
@@ -73,7 +58,6 @@ export default function RestaurantPage(props) {
             <div className='navigation'>
                 <div className='navigation-content'>
                     <div className='navigation-left'>
-                        <button className="add-review"><Link href={`/restaurants/new-review?restaurantName=${name}`}>Add a review</Link></button>
                     </div>
                     <div className='navigation-right'>
                         <button className='navigation-right-button'><Link href="/restaurants">Go Back</Link></button>
@@ -81,16 +65,14 @@ export default function RestaurantPage(props) {
                 </div>
             </div>
             <div className="main">
-                <h1 className='page-name'>Reviews</h1>
+            <h1 className='page-name'>Menu</h1>
                 <div className="reviewGrid">
-                    <ReviewList reviews={data} />
+                    <MenuList menu={data} />
                 </div>
                 <div className="back-button">
-                    <button className='main-button'><Link href="/restaurants">Go Back</Link></button>
+                <button className='main-button'><Link href="/restaurants">Go Back</Link></button>
                 </div>
             </div>
         </div>
     )
-
-
 }

@@ -25,18 +25,28 @@ export default function NewReviewForm(props) {
     }
 
     return (
-        <div>
+        <div className="grid-container">
+            <div className='header'>
+                <div className='header-content'>
+                    <div className='header-logo'>
+                        <img src="https://i.ibb.co/rHDMF1F/FF-logo.png" alt="FoodFast logo" className='logo' />
+                    </div>
+                    <div className='header-name'>
+                        <Link href="/">FoodFast</Link>
+                    </div>
+                </div>
+            </div>
             <div className='navigation'>
                 <div className='navigation-content'>
                     <div className='admin-command-bar'>
-                        <button className='navigation-right-button'><Link href="/restaurants/3">Cancel</Link></button>
+                        <button className='navigation-right-button'><Link href={`/restaurants`}>Cancel</Link></button>
                     </div>
                 </div>
             </div>
             <Card>
                 <form className={classes.form} onSubmit={submitHandler}>
 
-               
+
                     <div className={classes.control}>
                         <label htmlFor='author'>Name Surname</label>
                         <input type='text' required id='author' ref={authorInputRef} />
