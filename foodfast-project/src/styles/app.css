@@ -145,6 +145,16 @@ body {
   color: rgba(245, 89, 81, 1);
 }
 
+.add-menu {
+  margin: 5px 20px auto 20px;
+  float: right;
+  border-radius: 20px;
+  border-width: 0;
+  padding: 4px 10px 4px 10px;
+  background-color: #FFFFFF;
+  color: rgba(245, 89, 81, 1);
+}
+
 .main-button {
   margin: 5px 20px auto 20px;
   border-radius: 20px;
