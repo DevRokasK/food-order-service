@@ -41,6 +41,9 @@ export default function RestaurantItem(props) {
                 <div className={classes.actions}>
                     <button onClick={submitHandler}>Change state</button>
                 </div>
+                <div className={classes.actions1}>
+                    <button onClick={submitHandler}>Menu</button>
+                </div>
             </Card>
         </li>
     );
