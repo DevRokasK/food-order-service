@@ -12,7 +12,7 @@ export default function ReviewItem(props) {
                     <p>Review: {props.comment}</p>
                 </div>
                 <div className={classes.actions}>
-                    <button onclick="alert('cia turi but linkas')">Delete</button>
+                    <button onclick="alert('turi but linkas')">Delete</button>
                 </div>
             </Card>
         </li>
