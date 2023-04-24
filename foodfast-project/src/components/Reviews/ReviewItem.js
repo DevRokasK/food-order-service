@@ -11,6 +11,9 @@ export default function ReviewItem(props) {
                     <p>Score: {props.score}</p>
                     <p>Review: {props.comment}</p>
                 </div>
+                <div className={classes.actions}>
+                    <button onclick="alert('turi but linkas')">Delete</button>
+                </div>
             </Card>
         </li>
     );
