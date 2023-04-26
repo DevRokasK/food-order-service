@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 export default function RestaurantList(props) {
     const router = useRouter();
-    
+
     async function addRestaurantHandler(stateData) {
         const requestURL = `http://localhost:5228/api/food-fast/restaurant/change-availability?restaurantName=${stateData.restaurantName}&state=${stateData.state}`;
         const response = await fetch(requestURL, {
@@ -16,10 +16,19 @@ export default function RestaurantList(props) {
         }
     }
 
+    function goToMenu(name) {
+        router.push(`admin/menu?name=${name}`);
+    }
+
+    function goToEdit(name) {
+        router.push(`admin/editRestaurant?name=${name}`)
+    }
+
     return (
         <ul className={classes.list}>
+            <h1 className='page-name'>Restaurants</h1>
             {props.restaurants.map((restaurant) => (
-                <RestaurantItem onChangeState={addRestaurantHandler}
+                <RestaurantItem onChangeState={addRestaurantHandler} onMenuClick={goToMenu} onEditClick={goToEdit}
                     key={restaurant.id}
                     id={restaurant.id}
                     name={restaurant.name}

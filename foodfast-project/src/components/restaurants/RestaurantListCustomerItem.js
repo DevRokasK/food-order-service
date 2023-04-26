@@ -17,19 +17,19 @@ export default function RestaurantItem(props) {
                 </div>
                 <div className={classes.actions}>
                     <button><Link href={{
-                        pathname: `/restaurants/reviews`,
-                        query: {
-                            name: props.name
-                        }
-                    }}>Reviews</Link></button>
-                </div>
-                <div className={classes.actions}>
-                    <button><Link href={{
                         pathname: `/restaurants/menu`,
                         query: {
                             name: props.name
                         }
                     }}>Menu</Link></button>
+                </div>
+                <div className={classes.actions}>
+                    <button><Link href={{
+                        pathname: `/restaurants/reviews`,
+                        query: {
+                            name: props.name
+                        }
+                    }}>Reviews</Link></button>
                 </div>
             </Card>
         </li>

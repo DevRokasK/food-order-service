@@ -29,7 +29,7 @@ export default function Home() {
             </div>
             <div className='main'>
                 <div className='laikinas'>
-                    <button className='main-button'><Link href="/restaurants">Check all restaurants!</Link></button>
+                    <button className='main-button'><Link href="/restaurants">Check all available restaurants!</Link></button>
                 </div>
             </div>
         </div>
