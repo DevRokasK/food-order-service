@@ -2,10 +2,9 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import Card from '../ui/Card';
 import classes from './NewRestaurantForm.module.css';
-import { Restaurant } from '@/models/Restaurant';
 
-export default function NewRestaurantForm(props) {
-    const nameInputRef = useRef();
+export default function EditRestaurantForm(props) {
+    /* const nameInputRef = useRef(); */
     const descriptionInputRef = useRef();
     const hoursInputRef = useRef();
     const addressInputRef = useRef();
@@ -14,7 +13,8 @@ export default function NewRestaurantForm(props) {
     function submitHandler(event) {
         event.preventDefault();
 
-        const enteredName = nameInputRef.current.value;
+        /* const enteredName = nameInputRef.current.value; */
+        const enteredName = props.restaurant.name;
         const enteredDescription = descriptionInputRef.current.value;
         const enteredHours = hoursInputRef.current.value;
         const enteredAddress = addressInputRef.current.value;
@@ -29,7 +29,7 @@ export default function NewRestaurantForm(props) {
             phoneNumber: enteredPhone,
         };
 
-        props.onAddRestaurant(restaurantData);
+        props.onEditRestaurant(restaurantData);
     }
 
     return (
@@ -52,35 +52,36 @@ export default function NewRestaurantForm(props) {
                 </div>
             </div>
             <Card>
-            <h1 className='page-name'>Add Restaurant Information</h1>
+            <h1 className='page-name'>Edit Restaurant Information</h1>
                 <form className={classes.form} onSubmit={submitHandler}>
-                    <div className={classes.control}>
+                    {/* <div className={classes.control}>
                         <label htmlFor='name'>Restaurant Title</label>
-                        <input type='text' required id='name' ref={nameInputRef} />
-                    </div>
+                        <input type='text' required id='name' defaultValue={props.restaurant.name} ref={nameInputRef} />
+                    </div> */}
                     <div className={classes.control}>
                         <label htmlFor='description'>Description</label>
                         <textarea
                             id='description'
                             required
                             rows='5'
+                            defaultValue={props.restaurant.description}
                             ref={descriptionInputRef}
                         ></textarea>
                     </div>
                     <div className={classes.control}>
                         <label htmlFor='workingHours'>Working Hours</label>
-                        <input type='text' required id='workingHours' ref={hoursInputRef} />
+                        <input type='text' required id='workingHours' defaultValue={props.restaurant.workingHours} ref={hoursInputRef} />
                     </div>
                     <div className={classes.control}>
                         <label htmlFor='address'>Address</label>
-                        <input type='text' required id='address' ref={addressInputRef} />
+                        <input type='text' required id='address' defaultValue={props.restaurant.address} ref={addressInputRef} />
                     </div>
                     <div className={classes.control}>
                         <label htmlFor='telephoneNumber'>Telephone Number</label>
-                        <input type='text' required id='telephoneNumber' ref={phoneInputRef} />
+                        <input type='text' required id='telephoneNumber' defaultValue={props.restaurant.phoneNumber} ref={phoneInputRef} />
                     </div>
                     <div className={classes.actions}>
-                        <button>Add Restaurant</button>
+                        <button>Update Restaurant</button>
                     </div>
                 </form>
             </Card>

@@ -28,11 +28,12 @@ export default function Restaurants(props) {
                 </div>
             </div>
             <div className="main">
+                <h1 className='page-name'>Restaurants</h1>
                 <div className=''>
                     <RestaurantListCustomer restaurants={props.restaurants} />
                 </div>
                 <div className="back-button">
-                <button className='main-button'><Link href="/">Go Back</Link></button>
+                    <button className='main-button'><Link href="/">Go Back</Link></button>
                 </div>
             </div>
         </div>

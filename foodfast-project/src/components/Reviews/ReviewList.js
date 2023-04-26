@@ -8,11 +8,12 @@ export default function RestaurantListCustomer(props) {
                 ? props.reviews?.map((review) => (
                     <ReviewItem
                         key={review.id}
+                        id={review.id}
                         author={review.author}
                         score={review.score}
                         comment={review.comment}
                     />
-                )) : 
+                )) :
                 <p className='empty-message'>No reviews yet!</p>}
         </ul>
     )

@@ -19,6 +19,18 @@ export default function RestaurantItem(props) {
         props.onChangeState(stateData);
     }
 
+    function menuHandler(event) {
+        event.preventDefault();
+
+        props.onMenuClick(props.name);
+    }
+
+    function editHandler(event) {
+        event.preventDefault();
+
+        props.onEditClick(props.name);
+    }
+
     let state = null;
     if (props.isHidden == 0) {
         state = "Hidden";
@@ -42,7 +54,9 @@ export default function RestaurantItem(props) {
                     <button onClick={submitHandler}>Change state</button>
                 </div>
                 <div className={classes.actions1}>
-                    <button onClick={submitHandler}>Menu</button>
+                    <button onClick={editHandler}>Edit info</button>
+                    <div className='gap'></div>
+                    <button onClick={menuHandler}>Menu</button>
                 </div>
             </Card>
         </li>

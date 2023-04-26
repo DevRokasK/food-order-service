@@ -204,6 +204,10 @@ ul {
   margin: 8px auto 8px auto;
 }
 
+.gap {
+  margin: 8px;
+}
+
 @media only screen and (min-width: 768px) {
   body {
     overflow: hidden;
