@@ -1,12 +1,13 @@
 import React from "react";
 import Link from 'next/link';
-import MenuList from "../../components/menu/MenuList"
-import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
+import MenuList from "../../components/menu/MenuList";
+import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 
 export default function RestaurantPage(props) {
     const router = useRouter();
     const name = router.query.name;
+
     const [data, setData] = useState(null);
     const requestURL = `http://localhost:5228/api/food-fast/restaurant/${name}/meals?restaurantName=${name}`;
 
@@ -24,7 +25,7 @@ export default function RestaurantPage(props) {
 
         fetchData();
     }, [])
-    
+
     return (
         <div className="grid-container">
             <div className='header'>
@@ -35,27 +36,23 @@ export default function RestaurantPage(props) {
                     <div className='header-name'>
                         <Link href="/">FoodFast</Link>
                     </div>
-                    <div className='header-search'>
-                        <input type="text" id="searchBox" name="searchBox" className='searchBox' placeholder='What are you looking for?' />
-                    </div>
                 </div>
             </div>
             <div className='navigation'>
                 <div className='navigation-content'>
-                    <div className='navigation-left'>
-                    </div>
-                    <div className='navigation-right'>
-                        <button className='navigation-right-button'><Link href="/restaurants">Go Back</Link></button>
+                    <div className='admin-command-bar'>
+                        <button className="navigation-right-button"><Link href={`/admin/newMenu?restaurantName=${name}`}>Add a menu item</Link></button>
+                        <button className='navigation-right-button'><Link href="/admin">Go Back</Link></button>
                     </div>
                 </div>
             </div>
-            <div className="main">
-            <h1 className='page-name'>Menu</h1>
+            <div className="main-admin">
+                <h1 className='page-name'>Menu</h1>
                 <div className="reviewGrid">
-                    <MenuList menu={data} />
+                    <Menuist menu={data} />
                 </div>
                 <div className="back-button">
-                <button className='main-button'><Link href="/restaurants">Go Back</Link></button>
+                    <button className='main-button'><Link href="/admin">Go Back</Link></button>
                 </div>
             </div>
         </div>
