@@ -4,41 +4,10 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 
 export default function RestaurantPage(props) {
-    /*const router = useRouter();
-    const name = router.query.name;
-    getProps();
-    async function getProps() {
-        //fetch data from API
-        // http://localhost:5228/api/food-fast/restaurant/test/reviews?restaurantName=test
-        const requestURL = `http://localhost:5228/api/food-fast/restaurant/${name}/reviews?restaurantName=${name}`;
-        console.group(requestURL)
-        const response = await fetch(requestURL, {
-            method: "GET"
-        });
-
-        const data = await response.json();
-        console.log(data);
-
-        return {
-            props: {
-                reviews: data
-            }
-        };
-    }*/
-
     const router = useRouter();
     const name = router.query.name;
     const [data, setData] = useState();
     const requestURL = `http://localhost:5228/api/food-fast/restaurant/${name}/reviews?restaurantName=${name}`;
-
-    /*useEffect(() => {
-        fetch(requestURL)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                setData(data)
-            })
-    }, [])*/
 
     useEffect(() => {
         const fetchData = async () => {
