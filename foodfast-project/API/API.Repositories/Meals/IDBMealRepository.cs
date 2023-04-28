@@ -11,5 +11,6 @@ namespace API.Repositories
     {
 		IQueryable<Meal> GetRestaurantMeals(long restaurantID);
 		Task CreateMeal(Meal meal);
+		Task DeleteMeal(long mealID);
 	}
 }

@@ -26,5 +26,9 @@ namespace API.Services
 		{
 			await _DBMenuRepository.CreateMeal(meal);
 		}
+		public async Task DeleteMeal(long mealID)
+		{
+			await _DBMenuRepository.DeleteMeal(mealID);
+		}
 	}
 }

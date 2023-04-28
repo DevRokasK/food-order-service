@@ -1,6 +1,6 @@
 import React from "react";
 import Link from 'next/link';
-import MenuList from "../../components/menu/MenuList";
+import AdminMenuList from "../../components/menu/AdminMenuList";
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
@@ -49,7 +49,7 @@ export default function RestaurantPage(props) {
             <div className="main-admin">
                 <h1 className='page-name'>Menu</h1>
                 <div className="reviewGrid">
-                    <MenuList menu={data} />
+                    <AdminMenuList menu={data} />
                 </div>
                 <div className="back-button">
                     <button className='main-button'><Link href="/admin">Go Back</Link></button>

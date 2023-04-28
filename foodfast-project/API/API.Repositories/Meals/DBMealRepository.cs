@@ -26,5 +26,16 @@ namespace API.Repositories
 			await _context.Meals.AddAsync(meal);
 			await _context.SaveChangesAsync();
 		}
+
+		public async Task DeleteMeal(long mealID)
+		{
+			var mealToDelete = await _context.Meals.FindAsync(mealID);
+
+			if (mealToDelete != null)
+			{
+				_context.Meals.Remove(mealToDelete);
+				await _context.SaveChangesAsync();
+			}
+		}
 	}
 }
