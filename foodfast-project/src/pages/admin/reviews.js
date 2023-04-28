@@ -1,15 +1,13 @@
-import React from "react";
 import Link from 'next/link';
-import AdminMenuList from "../../components/menu/AdminMenuList";
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import AdminReviewList from "../../components/Reviews/AdminReviewList"
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 
 export default function RestaurantPage(props) {
     const router = useRouter();
     const name = router.query.name;
-
-    const [data, setData] = useState(null);
-    const requestURL = `http://localhost:5228/api/food-fast/restaurant/${name}/meals?restaurantName=${name}`;
+    const [data, setData] = useState();
+    const requestURL = `http://localhost:5228/api/food-fast/restaurant/${name}/reviews?restaurantName=${name}`;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -36,20 +34,22 @@ export default function RestaurantPage(props) {
                     <div className='header-name'>
                         <Link href="/">FoodFast</Link>
                     </div>
+                    <div className='header-search'>
+                        <input type="text" id="searchBox" name="searchBox" className='searchBox' placeholder='What are you looking for?' />
+                    </div>
                 </div>
             </div>
             <div className='navigation'>
                 <div className='navigation-content'>
-                    <div className='admin-command-bar'>
-                        <button className="navigation-right-button"><Link href={`/admin/newMenu?restaurantName=${name}`}>Add a menu item</Link></button>
+                    <div className='navigation-right'>
                         <button className='navigation-right-button'><Link href="/admin">Go Back</Link></button>
                     </div>
                 </div>
             </div>
-            <div className="main-admin">
-                <h1 className='page-name'>Menu</h1>
+            <div className="main">
+                <h1 className='page-name'>Reviews</h1>
                 <div className="reviewGrid">
-                    <AdminMenuList menu={data} />
+                    <AdminReviewList reviews={data} />
                 </div>
                 <div className="back-button">
                     <button className='main-button'><Link href="/admin">Go Back</Link></button>
@@ -57,4 +57,6 @@ export default function RestaurantPage(props) {
             </div>
         </div>
     )
+
+
 }

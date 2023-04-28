@@ -31,6 +31,12 @@ export default function RestaurantItem(props) {
         props.onEditClick(props.name);
     }
 
+    function reviewsHandler(event) {
+        event.preventDefault();
+
+        props.onReviewsClick(props.name);
+    }
+
     let state = null;
     if (props.isHidden == 0) {
         state = "Hidden";
@@ -57,6 +63,8 @@ export default function RestaurantItem(props) {
                     <button onClick={editHandler}>Edit info</button>
                     <div className='gap'></div>
                     <button onClick={menuHandler}>Menu</button>
+                    <div className='gap'></div>
+                    <button onClick={reviewsHandler}>Reviews</button>
                 </div>
             </Card>
         </li>

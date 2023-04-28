@@ -287,6 +287,20 @@ namespace API.Controllers
 			}
 		}
 
+		[HttpPost("api/food-fast/restaurant/{name}/meal/{id}/delete")]
+		public async Task<ActionResult> DeleteMeal(long mealID)
+		{
+			try
+			{
+				await _mealService.DeleteMeal(mealID);
+				return Ok();
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
+
 
 	}
 }
