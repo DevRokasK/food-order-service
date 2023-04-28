@@ -2,7 +2,7 @@ import Card from '../ui/Card';
 import classes from '../restaurants/RestaurantItem.module.css';
 import { useRouter } from 'next/router';
 
-export default function ReviewItem(props) {
+export default function AdminReviewItem(props) {
     const router = useRouter();
     const name = router.query.name;
 
@@ -15,7 +15,7 @@ export default function ReviewItem(props) {
 
         if (response.status === 200) {
             /* router.push(`/restaurants/reviews?name=${name}`); */
-            router.push(`/restaurants`);
+            router.push(`/admin`);
         }
     }
 
@@ -27,9 +27,9 @@ export default function ReviewItem(props) {
                     {/* <p>Score: {props.score}</p> */}
                     <p>Review: {props.comment}</p>
                 </div>
-                {/* <div className={classes.actions}>
+                <div className={classes.actions}>
                     <button onClick={deleteHandler}>Delete</button>
-                </div> */}
+                </div>
             </Card>
         </li>
     );

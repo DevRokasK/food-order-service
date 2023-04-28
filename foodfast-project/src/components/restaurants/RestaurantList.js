@@ -24,11 +24,15 @@ export default function RestaurantList(props) {
         router.push(`admin/editRestaurant?name=${name}`)
     }
 
+    function goToReviews(name) {
+        router.push(`admin/reviews?name=${name}`)
+    }
+
     return (
         <ul className={classes.list}>
             <h1 className='page-name'>Restaurants</h1>
             {props.restaurants.map((restaurant) => (
-                <RestaurantItem onChangeState={addRestaurantHandler} onMenuClick={goToMenu} onEditClick={goToEdit}
+                <RestaurantItem onChangeState={addRestaurantHandler} onMenuClick={goToMenu} onEditClick={goToEdit} onReviewsClick={goToReviews}
                     key={restaurant.id}
                     id={restaurant.id}
                     name={restaurant.name}
