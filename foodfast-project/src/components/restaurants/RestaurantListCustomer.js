@@ -1,3 +1,4 @@
+import React from 'react';
 import RestaurantItem from './RestaurantListCustomerItem';
 import classes from './RestaurantList.module.css';
 

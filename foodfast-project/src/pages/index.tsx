@@ -31,46 +31,52 @@ export default function Home(props: HomeProps) {
 
     return (
         <div>
-            <div className='header'>
-                <div className='header-content'>
-                    <div className='header-logo'>
-                        <img src="https://i.ibb.co/rHDMF1F/FF-logo.png" alt="FoodFast logo" className='logo' />
-                    </div>
-                    <div className='header-name'>
-                        <Link href="/">FoodFast</Link>
-                    </div>
-                    <div className='header-search'>
-                        <input type="text" id="searchBox" name="searchBox" className='searchBox' placeholder='What are you looking for?' value={filter} onChange={handleFilterChange} />
-                        <button className='navigation-right-button navigation-right-button-search' id="searchButton" onClick={handleSearch}>Search</button>                    
-                    </div>
-                </div>
+          <div className='header'>
+            <div className='header-content'>
+              <div className='header-logo'>
+                <img src="https://i.ibb.co/rHDMF1F/FF-logo.png" alt="FoodFast logo" className='logo' />
+              </div>
+              <div className='header-name'>
+                <Link href="/">FoodFast</Link>
+              </div>
+              <div className='header-search'>
+                <input type="text" id="searchBox" name="searchBox" className='searchBox' placeholder='What are you looking for?' value={filter} onChange={handleFilterChange} />
+                <button className='navigation-right-button navigation-right-button-search' id="searchButton" onClick={handleSearch}>Search</button>
+              </div>
             </div>
-            <div className='navigation'>
-                <div className='navigation-content'>
-                    <div className='navigation-left'>
-                        <button className='navigation-left-button'><Link href="/admin">Admin view</Link></button>
-                    </div>
-                    <div className='navigation-right'>
-                        <button className='navigation-right-button'><Link href="/restaurants">Restaurants</Link></button>
-                    </div>
-                </div>
+          </div>
+          <div className='navigation'>
+            <div className='navigation-content'>
+              <div className='navigation-left'>
+                <button className='navigation-left-button'><Link href="/admin">Admin view</Link></button>
+              </div>
+              <div className='navigation-right'>
+                <button className='navigation-right-button'><Link href="/restaurants">Restaurants</Link></button>
+              </div>
             </div>
-            <div className='main'>
-                <div className='laikinas'>
-                    <button className='main-button'><Link href="/restaurants">Check all available restaurants!</Link></button>
-                </div>
-                {isSearchClicked && filteredRestaurants.length === 0 && (
-                    <p className='empty-message'>No search results yet!</p>
+          </div>
+          <div className='main'>
+            <div className='laikinas'>
+              <button className='main-button'><Link href="/restaurants">Check all available restaurants!</Link></button>
+            </div>
+            {isSearchClicked ? (
+              <div>
+                <h1 className='page-name'>Search results: {filter}</h1>
+                {filteredRestaurants.length > 0 ? (
+                  <RestaurantListCustomer restaurants={filteredRestaurants} />
+                ) : (
+                  <p className='empty-message'>No search results yet!</p>
                 )}
-                {isSearchClicked && filteredRestaurants.length > 0 && (
-                    <h1 className="page-name">Search results: {filter}</h1>
-                )}
-                    <div className=''>
-                        <RestaurantListCustomer restaurants={filteredRestaurants} />
-                    </div>
-            </div>
+              </div>
+            ) : (
+              <div className=''>
+                {filter && <RestaurantListCustomer restaurants={filteredRestaurants} />}
+              </div>
+            )}
+          </div>
         </div>
-    );
+      );
+      
 }
 
 export async function getStaticProps() {
