@@ -34,19 +34,16 @@ export default function RestaurantPage(props) {
                     <div className='header-name'>
                         <Link href="/">FoodFast</Link>
                     </div>
-                    <div className='header-search'>
-                        <input type="text" id="searchBox" name="searchBox" className='searchBox' placeholder='What are you looking for?' />
-                    </div>
                 </div>
             </div>
             <div className='navigation'>
                 <div className='navigation-content'>
-                    <div className='navigation-right'>
+                    <div className='admin-command-bar'>
                         <button className='navigation-right-button'><Link href="/admin">Go Back</Link></button>
                     </div>
                 </div>
             </div>
-            <div className="main">
+            <div className="main-admin">
                 <h1 className='page-name'>Reviews</h1>
                 <div className="reviewGrid">
                     <AdminReviewList reviews={data} />
