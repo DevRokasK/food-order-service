@@ -12,6 +12,7 @@ export default function RestaurantItem(props) {
                         <img src={props.image} alt={props.title} />
                     </div>
                     <p>Name: {props.name}</p>
+                    <p>Description: {props.description}</p>
                     <p>Working hours: {props.workingHours}</p>
                     <p>Phone: {props.telephoneNumber}</p>
                 </div>

@@ -1,7 +1,26 @@
 import Link from 'next/link';
 import RestaurantListCustomer from '../../components/restaurants/RestaurantListCustomer'
+import { useState, useEffect } from 'react';
 
 export default function Restaurants(props) {
+    const [filter, setFilter] = useState('');
+    const [filteredRestaurants, setFilteredRestaurants] = useState(props.restaurants);
+    const [showSearchResults, setShowSearchResults] = useState(false);
+
+    const handleFilterChange = (event) => {
+        setFilter(event.target.value);
+    };
+
+    const handleSearch = async () => {
+        const response = await fetch(`http://localhost:5228/api/food-fast/restaurants/filter?filter=${filter}`, {
+            method: "GET"
+        });
+
+        const data = await response.json();
+        setFilteredRestaurants(data);
+        setShowSearchResults(true);
+    };
+
     return (
         <div className="grid-container">
             <div className='header'>
@@ -13,7 +32,8 @@ export default function Restaurants(props) {
                         <Link href="/">FoodFast</Link>
                     </div>
                     <div className='header-search'>
-                        <input type="text" id="searchBox" name="searchBox" className='searchBox' placeholder='What are you looking for?' />
+                        <input type="text" id="searchBox" name="searchBox" className='searchBox' placeholder='What are you looking for?' value={filter} onChange={handleFilterChange} />
+                        <button className='navigation-right-button navigation-right-button-search' id="searchButton" onClick={handleSearch}>Search</button>
                     </div>
                 </div>
             </div>
@@ -28,13 +48,21 @@ export default function Restaurants(props) {
                 </div>
             </div>
             <div className="main">
-                <h1 className='page-name'>Restaurants</h1>
-                <div className=''>
-                    <RestaurantListCustomer restaurants={props.restaurants} />
+            {showSearchResults ? (
+                <div>
+                    <h1 className='page-name'>Search results: {filter}</h1>
+                    {filteredRestaurants.length > 0 ? (
+                        <RestaurantListCustomer restaurants={filteredRestaurants} />
+                    ) : (
+                        <p className='empty-message'>No search results yet!</p>
+                    )}
                 </div>
-                <div className="back-button">
-                    <button className='main-button'><Link href="/">Go Back</Link></button>
-                </div>
+                ) : (
+    <div>
+        <h1 className='page-name'>Restaurants</h1>
+        <RestaurantListCustomer restaurants={props.restaurants} />
+    </div>
+)}
             </div>
         </div>
     )
