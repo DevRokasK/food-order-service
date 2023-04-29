@@ -34,9 +34,9 @@ export default function RestaurantPage(props) {
                     <div className='header-name'>
                         <Link href="/">FoodFast</Link>
                     </div>
-                    <div className='header-search'>
+                    {/* <div className='header-search'>
                         <input type="text" id="searchBox" name="searchBox" className='searchBox' placeholder='What are you looking for?' />
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className='navigation'>

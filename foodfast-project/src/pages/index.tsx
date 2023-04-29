@@ -1,6 +1,33 @@
 import Link from 'next/link';
+import RestaurantListCustomer from '../components/restaurants/RestaurantListCustomer'
+import { useState, useEffect } from 'react';
 
-export default function Home() {
+interface HomeProps {
+    restaurants: Array<any>;
+}
+
+export default function Home(props: HomeProps) {
+
+    const [filter, setFilter] = useState('');
+    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const [isSearchClicked, setIsSearchClicked] = useState(false);
+
+    const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setFilter(event.target.value);
+    };
+
+    const handleSearch = async () => {
+        if (!filter) {
+            return;
+          }
+        const response = await fetch(`http://localhost:5228/api/food-fast/restaurants/filter?filter=${filter}`, {
+            method: "GET"
+        });
+
+        const data = await response.json();
+        setFilteredRestaurants(data);
+        setIsSearchClicked(true);
+    };
 
     return (
         <div>
@@ -13,7 +40,8 @@ export default function Home() {
                         <Link href="/">FoodFast</Link>
                     </div>
                     <div className='header-search'>
-                        <input type="text" id="searchBox" name="searchBox" className='searchBox' placeholder='What are you looking for?' />
+                        <input type="text" id="searchBox" name="searchBox" className='searchBox' placeholder='What are you looking for?' value={filter} onChange={handleFilterChange} />
+                        <button className='navigation-right-button navigation-right-button-search' id="searchButton" onClick={handleSearch}>Search</button>                    
                     </div>
                 </div>
             </div>
@@ -31,7 +59,32 @@ export default function Home() {
                 <div className='laikinas'>
                     <button className='main-button'><Link href="/restaurants">Check all available restaurants!</Link></button>
                 </div>
+                {isSearchClicked && filteredRestaurants.length === 0 && (
+                    <p className='empty-message'>No search results yet!</p>
+                )}
+                {isSearchClicked && filteredRestaurants.length > 0 && (
+                    <h1 className="page-name">Search results: {filter}</h1>
+                )}
+                    <div className=''>
+                        <RestaurantListCustomer restaurants={filteredRestaurants} />
+                    </div>
             </div>
         </div>
     );
+}
+
+export async function getStaticProps() {
+    //fetch data from API
+    // http://localhost:5228/api/food-fast/restaurants
+    const response = await fetch('http://localhost:5228/api/food-fast/restaurants', {
+        method: "GET"
+    });
+
+    const data = await response.json();
+
+    return {
+        props: {
+            restaurants: data
+        }
+    };
 }

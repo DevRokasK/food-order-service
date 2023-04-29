@@ -59,15 +59,31 @@ body {
   align-items: center;
   margin: auto;
   height: 64px;
-  width: 240px;
+  width: 280px;
+  position: relative;
+}
+
+.navigation-right-button-search {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 40%;
+  cursor: pointer;
 }
 
 .searchBox {
-  text-align: center;
+  text-align: left;
   border-radius: 10px;
   margin: 20px 10px 20px 10px;
   position: absolute;
   width: 240px;
+  padding-left: 10px;
+  left: 5px;
 }
 
 .logo {
@@ -298,7 +314,7 @@ ul {
   }
 
   .searchBox {
-    text-align: center;
+    text-align: left;
     border-radius: 10px;
     border-width: 0;
     margin: 0 auto;
@@ -309,6 +325,7 @@ ul {
   ::placeholder {
     color: white;
     opacity: 1;
+    padding-left: 10px;
   }
 
   .cardGrid {
