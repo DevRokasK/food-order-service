@@ -56,7 +56,7 @@ export default function NewMenuForm(props) {
                     </div>
                     <div className={classes.control}>
                         <label htmlFor='price'>Price, €</label>
-                        <input type='number' required id='price' ref={priceInputRef} />
+                        <input type='number' step='any' required id='price' ref={priceInputRef} />
                     </div>
                     <div className={classes.control}>
                         <label htmlFor='size'>Size</label>
