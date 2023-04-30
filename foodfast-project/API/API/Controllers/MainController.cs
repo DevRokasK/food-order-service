@@ -98,8 +98,21 @@ namespace API.Controllers
             return Ok(result);
         }
 
+		[HttpGet("api/food-fast/restaurants/ordered-az")]
+		public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurantsOrderedAz()
+		{
+			var result = await _restaurantService.GetRestaurants().ToListAsync();
 
-        [HttpGet("api/food-fast/restaurant/{name}")]
+            result = result.OrderBy(r => r.Name).ToList();
+
+			if (!result.Any())
+				return NotFound();
+
+			return Ok(result);
+		}
+
+
+		[HttpGet("api/food-fast/restaurant/{name}")]
 
         public async Task<ActionResult<Restaurant>> GetRestaurantByName(string restaurantName)
         {

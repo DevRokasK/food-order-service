@@ -13,7 +13,7 @@ namespace API.Services
         Task<bool> ChangeRestaurantAvailability(string restaurantName, int state);
         Task<Restaurant> GetRestaurantByName(string restaurantName);
         IQueryable<Restaurant> GetRestaurants();
-        IQueryable<Restaurant> GetRestaurantsFiltered(string filter);
+		IQueryable<Restaurant> GetRestaurantsFiltered(string filter);
 		Task UpdateRestaurant(string restaurantName, RestaurantUpdateModel restaurant);
 	}
 }

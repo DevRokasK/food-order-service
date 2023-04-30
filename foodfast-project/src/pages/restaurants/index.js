@@ -6,12 +6,14 @@ export default function Restaurants(props) {
     const [filter, setFilter] = useState('');
     const [filteredRestaurants, setFilteredRestaurants] = useState(props.restaurants);
     const [showSearchResults, setShowSearchResults] = useState(false);
+    const [sorted, setSorted] = useState(false);
 
     const handleFilterChange = (event) => {
         setFilter(event.target.value);
     };
 
     const handleSearch = async () => {
+        setShowSearchResults(false);
         const response = await fetch(`http://localhost:5228/api/food-fast/restaurants/filter?filter=${filter}`, {
             method: "GET"
         });
@@ -19,7 +21,20 @@ export default function Restaurants(props) {
         const data = await response.json();
         setFilteredRestaurants(data);
         setShowSearchResults(true);
+        setSorted(false);
     };
+
+    const handleSort = async () => {
+        const response = await fetch(`http://localhost:5228/api/food-fast/restaurants/ordered-az`, {
+            method: "GET"
+        });
+    
+        const data = await response.json();
+        setFilteredRestaurants(data);
+        setShowSearchResults(true);
+        setSorted(true);
+    };
+    
 
     return (
         <div className="grid-container">
@@ -40,7 +55,7 @@ export default function Restaurants(props) {
             <div className='navigation'>
                 <div className='navigation-content'>
                     <div className='navigation-left'>
-                        {/*<button className='navigation-left-button'>Discover</button>*/}
+                        <button className='navigation-left-button' onClick={handleSort}>Sort A-Z</button>
                     </div>
                     <div className='navigation-right'>
                         <button className='navigation-right-button'><Link href="/">Go Back</Link></button>
@@ -50,7 +65,7 @@ export default function Restaurants(props) {
             <div className="main">
             {showSearchResults ? (
                 <div>
-                    <h1 className='page-name'>Search results: {filter}</h1>
+                    <h1 className='page-name'>{sorted ? `Search results: Sorted A-Z` : `Search results: ${filter}`}</h1>
                     {filteredRestaurants.length > 0 ? (
                         <RestaurantListCustomer restaurants={filteredRestaurants} />
                     ) : (
