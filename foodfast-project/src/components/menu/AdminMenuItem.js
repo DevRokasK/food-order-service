@@ -23,7 +23,7 @@ export default function ReviewItem(props) {
             <Card>
                 <div className={classes.content}>
                     <p>Meal: {props.name}</p>
-                    <p>Price: {props.price}</p>
+                    <p>Price: {props.price}€</p>
                     <p>Size: {props.size}</p>
                     <p>Packaging: {props.package}</p>
                 </div>
