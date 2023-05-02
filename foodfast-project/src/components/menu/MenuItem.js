@@ -1,9 +1,9 @@
 import Card from '../ui/Card';
 import classes from '../restaurants/RestaurantItem.module.css';
 
-export default function ReviewItem(props) {
-    function addToOrder(data) {
-        props.OnAddToOrder(data);
+export default function MenuItem(props) {
+    function onOddToOrder(data) {
+        props.addToOrder(data);
     }
 
     return (
@@ -16,7 +16,7 @@ export default function ReviewItem(props) {
                     <p>Packaging: {props.package}</p>
                 </div>
                 <div className={classes.actions}>
-                    <button onClick={addToOrder({
+                    <button onClick={onOddToOrder({
                         name: props.name,
                         price: props.price,
                         size: props.size,

@@ -1,9 +1,9 @@
 import MenuItem from './MenuItem';
 import classes from '../restaurants/RestaurantList.module.css';
 
-export default function RestaurantListCustomer(props) {
-    function addToOrder(data) {
-        props.OnAddToOrder(data);
+export default function MenuList(props) {
+    function onAddToOrder(data) {
+        props.addToOrder(data);
     }
 
     return (
@@ -16,7 +16,7 @@ export default function RestaurantListCustomer(props) {
                         price={menu.price}
                         size={menu.size}
                         package={menu.package}
-                        OnAddToOrder={addToOrder}
+                        addToOrder={onAddToOrder}
                     />
                 )) :
                 <p className='empty-message'>No menu yet!</p>}
