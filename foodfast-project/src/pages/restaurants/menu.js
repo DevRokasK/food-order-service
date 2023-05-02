@@ -3,6 +3,7 @@ import Link from 'next/link';
 import MenuList from "../../components/menu/MenuList"
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
 export default function RestaurantPage(props) {
     const router = useRouter();
@@ -24,7 +25,18 @@ export default function RestaurantPage(props) {
 
         fetchData();
     }, [])
-    
+
+    let orderData = [];
+
+    function addToOrder(data) {
+        orderData.push(data);
+    }
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <div className="grid-container">
             <div className='header'>
@@ -46,18 +58,28 @@ export default function RestaurantPage(props) {
                     </div>
                     <div className='navigation-right'>
                         <button className='navigation-right-button'><Link href="/restaurants">Go Back</Link></button>
+                        <button className='navigation-right-button' onClick={handleShow}>Check Order</button>
                     </div>
                 </div>
             </div>
             <div className="main">
-            <h1 className='page-name'>Menu</h1>
+                <h1 className='page-name'>Menu</h1>
                 <div className="reviewGrid">
-                    <MenuList menu={data} />
+                    <MenuList menu={data} onAddToOrder={addToOrder} />
                 </div>
                 <div className="back-button">
-                <button className='main-button'><Link href="/restaurants">Go Back</Link></button>
+                    <button className='main-button'><Link href="/restaurants">Go Back</Link></button>
                 </div>
             </div>
+            <Offcanvas show={show} onHide={handleClose}>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                    Some text as placeholder. In real life you can have the elements you
+                    have chosen. Like, text, images, lists, etc.
+                </Offcanvas.Body>
+            </Offcanvas>
         </div>
     )
 }
