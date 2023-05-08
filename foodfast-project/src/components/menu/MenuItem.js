@@ -1,5 +1,8 @@
 import Card from '../ui/Card';
 import classes from '../restaurants/RestaurantItem.module.css';
+import React from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function MenuItem(props) {
     function onOddToOrder() {
@@ -10,6 +13,7 @@ export default function MenuItem(props) {
             size: props.size,
             package: props.package
         });
+        toast.success(`${props.name} added to order!`);
     }
 
     return (

@@ -4,6 +4,8 @@ import type { AppProps } from 'next/app'
 import { RootStore } from '@/stores/RootStore';
 import Head from 'next/head';
 import { Fragment } from 'react';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   const store = new RootStore();
@@ -11,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Fragment>
       <Head>
         <title>Food Fast</title>
-      </Head> <Component {...pageProps} />
+      </Head> <ToastContainer /> <Component {...pageProps} />
     </Fragment>
   );
 }

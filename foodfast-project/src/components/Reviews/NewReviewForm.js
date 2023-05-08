@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import Card from '../ui/Card';
 import classes from './NewReviewForm.module.css'
 import Link from 'next/link';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function NewReviewForm(props) {
     const authorInputRef = useRef();
@@ -21,6 +23,7 @@ export default function NewReviewForm(props) {
         };
 
         props.onAddReview(reviewData);
+        toast.success("Thank You for review!");
     }
 
     return (
