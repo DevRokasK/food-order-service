@@ -28,13 +28,13 @@ export default function Restaurants(props) {
         const response = await fetch(`http://localhost:5228/api/food-fast/restaurants/ordered-az`, {
             method: "GET"
         });
-    
+
         const data = await response.json();
         setFilteredRestaurants(data);
         setShowSearchResults(true);
         setSorted(true);
     };
-    
+
 
     return (
         <div className="grid-container">
@@ -63,21 +63,21 @@ export default function Restaurants(props) {
                 </div>
             </div>
             <div className="main">
-            {showSearchResults ? (
-                <div>
-                    <h1 className='page-name'>{sorted ? `Search results: Sorted A-Z` : `Search results: ${filter}`}</h1>
-                    {filteredRestaurants.length > 0 ? (
-                        <RestaurantListCustomer restaurants={filteredRestaurants} />
-                    ) : (
-                        <p className='empty-message'>No search results yet!</p>
-                    )}
-                </div>
+                {showSearchResults ? (
+                    <div>
+                        <h1 className='page-name'>{sorted ? `Search results: Sorted A-Z` : `Search results: ${filter}`}</h1>
+                        {filteredRestaurants.length > 0 ? (
+                            <RestaurantListCustomer restaurants={filteredRestaurants} />
+                        ) : (
+                            <p className='empty-message'>No search results yet!</p>
+                        )}
+                    </div>
                 ) : (
-    <div>
-        <h1 className='page-name'>Restaurants</h1>
-        <RestaurantListCustomer restaurants={props.restaurants} />
-    </div>
-)}
+                    <div>
+                        <h1 className='page-name'>Restaurants</h1>
+                        <RestaurantListCustomer restaurants={props.restaurants} />
+                    </div>
+                )}
             </div>
         </div>
     )
