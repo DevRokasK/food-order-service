@@ -1,6 +1,8 @@
 import Card from '../ui/Card';
 import classes from '../restaurants/RestaurantItem.module.css';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ReviewItem(props) {
 
@@ -16,6 +18,8 @@ export default function ReviewItem(props) {
         if (response.status === 200) {
             router.push(`/admin`);
         }
+
+        toast.success(props.name + " deleted!")
     }
 
     return (

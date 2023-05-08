@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import EditRestaurantForm from '../../components/restaurants/EditRestaurantForm';
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function NewRestaurantPage(props) {
     const router = useRouter();
@@ -42,6 +44,8 @@ export default function NewRestaurantPage(props) {
         if (response.status === 200) {
             router.push('/admin')
         }
+
+        toast.success(enteredRestaurantData.name + " updated!");
     }
 
     return <EditRestaurantForm onEditRestaurant={editRestaurantHandler} restaurant={data} />

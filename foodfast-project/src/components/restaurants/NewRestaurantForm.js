@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Card from '../ui/Card';
 import classes from './NewRestaurantForm.module.css';
 import { Restaurant } from '@/models/Restaurant';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function NewRestaurantForm(props) {
     const nameInputRef = useRef();
@@ -30,6 +32,8 @@ export default function NewRestaurantForm(props) {
         };
 
         props.onAddRestaurant(restaurantData);
+
+        toast.success(restaurantData.name + " added to the list!");
     }
 
     return (

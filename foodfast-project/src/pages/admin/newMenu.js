@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router';
 import NewMenuForm from '../../components/menu/NewMenuForm'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function NewRestaurantPage(props) {
     const router = useRouter();
@@ -20,6 +23,9 @@ export default function NewRestaurantPage(props) {
         if (response.status === 200) {
             router.push(`/admin/menu?name=${restaurantName}`)
         }
+
+        toast.success(enteredMenuData.name + " added to menu!");
+
     }
 
     return <NewMenuForm onAddMenu={addMenuHandler} name={restaurantName} />
