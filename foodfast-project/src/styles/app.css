@@ -210,8 +210,9 @@ body {
   border-radius: 20px;
   border-width: 0;
   padding: 4px 10px 4px 10px;
-  background-color: #FFFFFF;
-  color: rgba(245, 89, 81, 1);
+  background-color: rgba(245, 89, 81, 1);
+  color: #000000;
+  font-size: large;
 }
 
 .laikinas {
@@ -265,6 +266,18 @@ ul {
 
 ul {
   list-style-type: none;
+}
+
+.opening {
+  width: 1fr;
+  height: 600px;
+  margin-top: 24px;
+  background-image: url('https://img.freepik.com/free-photo/copy-space-italian-food-ingredients_23-2148551732.jpg?w=2000');
+}
+
+.rights {
+  text-align: center;
+  margin: 36px auto auto auto;
 }
 
 @media only screen and (min-width: 768px) {
@@ -405,5 +418,12 @@ ul {
     margin: 20px;
     border-radius: 20px;
     background-color: #FFFFFF;
+  }
+
+  .absolute-button{
+    position: absolute;
+    left: 55rem;
+    top: 25rem;
+    font-size: xx-large;
   }
 }

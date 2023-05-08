@@ -9,7 +9,7 @@ interface HomeProps {
 
 export default function Home(props: HomeProps) {
 
-  const [filter, setFilter] = useState('');
+  /* const [filter, setFilter] = useState('');
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [isSearchClicked, setIsSearchClicked] = useState(false);
 
@@ -28,7 +28,7 @@ export default function Home(props: HomeProps) {
     const data = await response.json();
     setFilteredRestaurants(data);
     setIsSearchClicked(true);
-  };
+  }; */
 
   return (
     <div className='view'>
@@ -40,10 +40,10 @@ export default function Home(props: HomeProps) {
           <div className='header-name'>
             <Link href="/">FoodFast</Link>
           </div>
-          <div className='header-search'>
+          {/* <div className='header-search'>
             <input type="text" id="searchBox" name="searchBox" className='searchBox' placeholder='What are you looking for?' value={filter} onChange={handleFilterChange} />
             <button className='navigation-right-button navigation-right-button-search' id="searchButton" onClick={handleSearch}>Search</button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className='navigation'>
@@ -57,7 +57,7 @@ export default function Home(props: HomeProps) {
         </div>
       </div>
       <div className='main'>
-        {isSearchClicked ? (
+        {/*         {isSearchClicked ? (
           <div>
             <h1 className='page-name'>Search results: {filter}</h1>
             {filteredRestaurants.length > 0 ? (
@@ -73,10 +73,14 @@ export default function Home(props: HomeProps) {
               <RestaurantListIndex restaurants={props.restaurants} />
             </div>
           </div>
-        )}
-        <div className='laikinas'>
-          <button className='main-button-atlernative'><Link href="/restaurants">Check all available restaurants!</Link></button>
+        )} */}
+        <div className='opening'>
+          <div className='absolute-button'>
+            <h1>Tastier, Faster!</h1>
+            <button className='main-button-atlernative'><Link href="/restaurants">Check all available restaurants</Link></button>
+          </div>
         </div>
+        <p className='rights'>All right reserved.</p>
       </div>
     </div>
   );
