@@ -4,6 +4,10 @@ body {
   font-family: "Arial", sans-serif;
 }
 
+.view {
+  overflow: hidden;
+}
+
 #overlay {
   position: fixed;
   display: none;
@@ -48,7 +52,7 @@ body {
 
 .header-name {
   float: left;
-  width: 120px;
+  width: auto;
   height: 64px;
   display: flex;
 }
@@ -201,6 +205,15 @@ body {
   color: rgba(245, 89, 81, 1);
 }
 
+.main-button-atlernative {
+  margin: 5px 20px 48px 20px;
+  border-radius: 20px;
+  border-width: 0;
+  padding: 4px 10px 4px 10px;
+  background-color: #FFFFFF;
+  color: rgba(245, 89, 81, 1);
+}
+
 .laikinas {
   text-align: center;
 }
@@ -243,6 +256,15 @@ ul {
 
 .gap {
   margin: 8px;
+}
+
+::marker {
+  display: none;
+  list-style-type: none;
+}
+
+ul {
+  list-style-type: none;
 }
 
 @media only screen and (min-width: 768px) {
@@ -353,8 +375,8 @@ ul {
     height: 1fr;
     width: 1fr;
     display: grid;
-    margin: 48px 96px 48px 98px;
-    grid-template-columns: repeat(4, minmax(0px, 1fr));
+    margin: 16px 96px 48px 98px;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
     gap: 1rem;
   }
 

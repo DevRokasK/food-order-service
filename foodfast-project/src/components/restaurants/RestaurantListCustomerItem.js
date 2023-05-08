@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function RestaurantItem(props) {
 
     return (
-        <li className={classes.item}>
+        <div className={classes.item}>
             <Card>
                 <div className={classes.content}>
                     <div className={classes.image}>
@@ -33,6 +33,6 @@ export default function RestaurantItem(props) {
                     }}>Reviews</Link></button>
                 </div>
             </Card>
-        </li>
+        </div>
     );
 }
