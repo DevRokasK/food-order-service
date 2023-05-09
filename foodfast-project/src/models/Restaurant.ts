@@ -8,7 +8,12 @@ export interface IRestaurantItem {
     workingHours: string;
     address: string;
     telephoneNumber: string;
-    isHidden: boolean;
+    isHidden: number;
+}
+
+export enum RestaurantState {
+    hidden = 0,
+    visible = 1
 }
 
 export class Restaurant implements IRestaurantItem {
@@ -19,7 +24,7 @@ export class Restaurant implements IRestaurantItem {
     public workingHours: string;
     public address: string;
     public telephoneNumber: string;
-    public isHidden: boolean;
+    public isHidden: RestaurantState;
     public MenuStore: MenuStore = new MenuStore();
     public ReviewStore: ReviewStore = new ReviewStore();
 
@@ -39,6 +44,34 @@ export class Restaurant implements IRestaurantItem {
     }
 
     public hideRestaurant() {
-        this.isHidden = !this.isHidden;
+        if (this.isHidden == 0) {
+            this.isHidden = 1;
+        } else {
+            this.isHidden = 0;
+        }
+    }
+
+    public setId(value: string) {
+        this.id = value;
+    }
+
+    public setName(value: string) {
+        this.name = value;
+    }
+
+    public setDesc(value: string) {
+        this.description = value;
+    }
+
+    public setHours(value: string) {
+        this.workingHours = value;
+    }
+
+    public setAddress(value: string) {
+        this.address = value;
+    }
+
+    public setPhone(value: string) {
+        this.telephoneNumber = value;
     }
 }

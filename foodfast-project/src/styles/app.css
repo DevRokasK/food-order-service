@@ -1,6 +1,31 @@
 body {
   margin: 0;
   box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+.view {
+  overflow: hidden;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
+  overflow: auto;
+}
+
+.overlay-data {
+  background-color: #FFFFFF;
+  text-align: center;
 }
 
 .grid-container {
@@ -27,7 +52,7 @@ body {
 
 .header-name {
   float: left;
-  width: 120px;
+  width: auto;
   height: 64px;
   display: flex;
 }
@@ -59,15 +84,31 @@ body {
   align-items: center;
   margin: auto;
   height: 64px;
-  width: 240px;
+  width: 280px;
+  position: relative;
+}
+
+.navigation-right-button-search {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 40%;
+  cursor: pointer;
 }
 
 .searchBox {
-  text-align: center;
+  text-align: left;
   border-radius: 10px;
   margin: 20px 10px 20px 10px;
   position: absolute;
   width: 240px;
+  padding-left: 10px;
+  left: 5px;
 }
 
 .logo {
@@ -136,25 +177,50 @@ body {
 }
 
 .add-review {
-  margin-bottom: 20px;
-  text-align: center;
-  justify-content: center;
+  margin: 5px 20px auto 20px;
+  float: right;
   border-radius: 20px;
-  background-color: #F55951;
-  padding: 10px 20px;
-  font-size: 30px;
-  border: 2px solid black;
-  /* margin-top: 20px;
-  margin-bottom: 10;
-  margin-right: 300px;
-  margin-left: 700px; */
+  border-width: 0;
+  padding: 4px 10px 4px 10px;
+  background-color: #FFFFFF;
+  color: rgba(245, 89, 81, 1);
+}
+
+.add-menu {
+  margin: 5px 20px auto 20px;
+  float: right;
+  border-radius: 20px;
+  border-width: 0;
+  padding: 4px 10px 4px 10px;
+  background-color: #FFFFFF;
+  color: rgba(245, 89, 81, 1);
+}
+
+.main-button {
+  margin: 5px 20px auto 20px;
+  border-radius: 20px;
+  border-width: 0;
+  padding: 4px 10px 4px 10px;
+  background-color: #FFFFFF;
+  color: rgba(245, 89, 81, 1);
+}
+
+.main-button-atlernative {
+  margin: 5px 20px 48px 20px;
+  border-radius: 20px;
+  border-width: 0;
+  padding: 4px 10px 4px 10px;
+  background-color: rgba(245, 89, 81, 1);
+  color: #000000;
+  font-size: large;
 }
 
 .laikinas {
   text-align: center;
 }
 
-input[type=text], textarea {
+input[type=text],
+textarea {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
@@ -164,13 +230,54 @@ input[type=text], textarea {
   margin: 5px 1px 3px 0px;
   border: 1px solid #DDDDDD;
 }
- 
-input[type=text]:focus, textarea:focus {
+
+input[type=text]:focus,
+textarea:focus {
   box-shadow: 0 0 5px rgba(245, 89, 81, 1);
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
   border: 1px solid rgba(245, 89, 81, 1);
   color: #000000;
+}
+
+ul {
+  -webkit-column-count: 1;
+  -moz-column-count: 1;
+  column-count: 1;
+}
+
+.empty-message {
+  text-align: center;
+}
+
+.page-name {
+  text-align: center;
+  margin: 8px auto 8px auto;
+}
+
+.gap {
+  margin: 8px;
+}
+
+::marker {
+  display: none;
+  list-style-type: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.opening {
+  width: 1fr;
+  height: 600px;
+  margin-top: 24px;
+  background-image: url('https://img.freepik.com/free-photo/copy-space-italian-food-ingredients_23-2148551732.jpg?w=2000');
+}
+
+.rights {
+  text-align: center;
+  margin: 36px auto auto auto;
 }
 
 @media only screen and (min-width: 768px) {
@@ -194,6 +301,7 @@ input[type=text]:focus, textarea:focus {
 
   .navigation {
     display: contents;
+    overflow: hidden;
     visibility: visible;
     grid-area: nav;
     width: 100vw;
@@ -218,10 +326,11 @@ input[type=text]:focus, textarea:focus {
   }
 
   .navigation-left-button {
-    visibility: hidden;
     margin: 5px 20px auto 20px;
     float: right;
     border-radius: 20px;
+    border-width: 0;
+    padding: 4px 10px 4px 10px;
     background-color: #F55951;
   }
 
@@ -261,7 +370,7 @@ input[type=text]:focus, textarea:focus {
   }
 
   .searchBox {
-    text-align: center;
+    text-align: left;
     border-radius: 10px;
     border-width: 0;
     margin: 0 auto;
@@ -272,14 +381,15 @@ input[type=text]:focus, textarea:focus {
   ::placeholder {
     color: white;
     opacity: 1;
+    padding-left: 10px;
   }
 
   .cardGrid {
     height: 1fr;
     width: 1fr;
     display: grid;
-    margin: 48px 96px 48px 98px;
-    grid-template-columns: repeat(4, minmax(0px, 1fr));
+    margin: 16px 96px 48px 98px;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
     gap: 1rem;
   }
 
@@ -296,7 +406,7 @@ input[type=text]:focus, textarea:focus {
   }
 
   .reviewGrid {
-    margin: 48px 96px 48px 98px;
+    margin: 8px 96px 48px 98px;
     grid-template-columns: repeat(1, minmax(0px, 600px));
   }
 
@@ -310,4 +420,10 @@ input[type=text]:focus, textarea:focus {
     background-color: #FFFFFF;
   }
 
+  .absolute-button{
+    position: absolute;
+    left: 55rem;
+    top: 25rem;
+    font-size: xx-large;
+  }
 }

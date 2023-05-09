@@ -1,42 +1,63 @@
 import { useRef } from 'react';
 import Card from '../ui/Card';
 import classes from './NewReviewForm.module.css'
+import Link from 'next/link';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function NewReviewForm(props) {
     const authorInputRef = useRef();
-    const scoreInputRef = useRef();
     const commentInputRef = useRef();
 
     function submitHandler(event) {
         event.preventDefault();
 
         const enteredAuthor = authorInputRef.current.value;
-        const enteredScore = scoreInputRef.current.value;
+        /* const enteredScore = scoreInputRef.current.value; */
         const enteredComment = commentInputRef.current.value;
 
         const reviewData = {
             author: enteredAuthor,
-            score: enteredScore,
+            /* score: enteredScore, */
             comment: enteredComment
         };
 
         props.onAddReview(reviewData);
+        toast.success("Thank You for review!");
     }
 
     return (
-        <div>
+        <div className="grid-container">
+            <div className='header'>
+                <div className='header-content'>
+                    <div className='header-logo'>
+                        <img src="https://i.ibb.co/rHDMF1F/FF-logo.png" alt="FoodFast logo" className='logo' />
+                    </div>
+                    <div className='header-name'>
+                        <Link href="/">FoodFast</Link>
+                    </div>
+                </div>
+            </div>
+            <div className='navigation'>
+                <div className='navigation-content'>
+                    <div className='admin-command-bar'>
+                        <button className='navigation-right-button'><Link href={`/restaurants/reviews?name=${props.name}`}>Cancel</Link></button>
+                    </div>
+                </div>
+            </div>
             <Card>
                 <form className={classes.form} onSubmit={submitHandler}>
+
 
                     <div className={classes.control}>
                         <label htmlFor='author'>Name Surname</label>
                         <input type='text' required id='author' ref={authorInputRef} />
                     </div>
 
-                    <div className={classes.control}>
+                    {/* <div className={classes.control}>
                         <label htmlFor='score'>Score</label>
-                        <input type='number' required id='score' ref={scoreInputRef} />
-                    </div>
+                        <input type='text' required id='score' ref={scoreInputRef} />
+                    </div> */}
 
                     <div className={classes.control}>
                         <label htmlFor='comment'>Comment</label>
