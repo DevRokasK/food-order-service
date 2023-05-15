@@ -55,6 +55,10 @@ export default function RestaurantPage(props) {
         return sum;
     }
 
+    function removeOrderItem(index) {
+        setOrder((order) => order.filter((_, i) => i !== index));
+      }
+
     return (
         <div className="grid-container">
             <div className='header'>
@@ -72,11 +76,23 @@ export default function RestaurantPage(props) {
             </div>
             <div className='navigation'>
                 <div className='navigation-content'>
-                    <div className='navigation-left'>
-                        {order.length > 0 ? (
-                            <button className='navigation-left-button' onClick={on}>Check Order</button>
-                        ) : (<></>)}
-                    </div>
+                <div className="navigation-left">
+            {order.length > 0 ? (
+              <>
+                <button className="navigation-left-button" onClick={on}>
+                  Check Order
+                </button>
+                <button
+                  className="navigation-left-button"
+                  onClick={() => setOrder([])}
+                >
+                  Cancel Order
+                </button>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
                     <div className='navigation-right'>
                         <button className='navigation-right-button'><Link href="/restaurants">Go Back</Link></button>
                     </div>
